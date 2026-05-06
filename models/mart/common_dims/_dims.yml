@@ -1,0 +1,108 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: Customer dimension table
+    constraints:
+      - type: primary_key
+        columns: [cpa_id]
+      
+      - type: foreign_key 
+        columns: [ctry_cd]
+        to: ref('dim_geo_hier')
+        to_columns: [ctry_cd]
+
+    columns:
+      - name: cpa_id
+        description: Customer ID - Primary Key
+        data_tests:
+          - unique
+          - not_null
+      
+      - name: ctry_cd 
+        description: doc('ctry_cd')
+        data_tests: 
+          - not_null
+      
+      - name: cpa_name
+        description: doc('cpa_name')
+
+      - name: syst_src_cd
+        description: docs ('syst_src_cd')
+      
+
+  - name: dim_geo_hier
+    description: Geographic hierarchy dimension table
+    constraints:
+      - type: primary_key
+        columns: [ctry_cd]
+  
+    columns:
+      - name: ctry_cd
+        data_type: varchar
+        description: country code - Primary Key
+        data_tests:
+          - not_null
+          - unique 
+
+      - name: ctry_nm
+        data_type: varchar
+        description: "{{ doc('ctry_nm') }}"
+        data_tests:
+          - not_null 
+
+      - name: ctry_area_cd
+        data_type: varchar
+        description: "{{ doc('ctry_area_cd') }}"
+
+      - name: ctry_area_nm
+        data_type: varchar
+        description: "{{ doc('ctry_area_nm') }}"
+
+      - name: area_cd
+        data_type: varchar
+        description: "{{ doc('area_cd') }}"
+
+      - name: area_nm
+        data_type: varchar
+        description: "{{ doc('area_nm') }}"
+
+      - name: sub_rgn_cd
+        data_type: varchar
+        description: "{{ doc('sub_rgn_cd') }}"
+
+      - name: sub_rgn_nm
+        data_type: varchar
+        description: "{{ doc('sub_rgn_nm') }}"
+
+      - name: rgn_cd
+        data_type: varchar
+        description: "{{ doc('rgn_cd') }}"
+
+      - name: rgn_nm
+        data_type: varchar
+        description: "{{ doc('rgn_nm') }}"
+
+      - name: super_rgn_cd
+        data_type: varchar
+        description: "{{ doc('super_rgn_cd') }}"
+
+      - name: super_rgn_nm
+        data_type: varchar
+        description: "{{ doc('super_rgn_nm') }}"
+
+      - name: clstr_nm
+        data_type: varchar
+        description: "{{ doc('clstr_nm') }}"
+
+      - name: comet_organization_cd
+        data_type: varchar
+        description: "{{ doc('comet_organization_cd') }}"
+
+      - name: bill_syst_cd
+        data_type: varchar
+        description: "{{ doc('bill_syst_cd') }}"
+
+      - name: rec_type_cd
+        data_type: varchar
+        description: "{{ doc('rec_type_cd') }}"
