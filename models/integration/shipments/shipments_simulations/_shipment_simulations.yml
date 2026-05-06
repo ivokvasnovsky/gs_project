@@ -1,0 +1,993 @@
+version: 2
+
+models:
+  - name: int_ship_sims_gre
+    description: ""
+    columns:
+      - name: valid_from
+        data_type: date
+        description: "{{ doc('valid_from') }}"
+        
+      - name: system_source_code
+        data_type: varchar
+        description: "{{ doc('syst_src_cd') }}"
+
+      - name: gre_uniq_id
+        data_type: varchar
+        description: "{{ doc('gre_uniq_id') }}"
+
+      - name: revenue_no
+        data_type: varchar
+        description: "{{ doc('revenue_no') }}"
+
+      - name: awb_no
+        data_type: number
+        description: "{{ doc('awb_no') }}"
+
+      - name: sim_type
+        data_type: varchar
+        description: "{{ doc('sim_type') }}"
+
+      - name: shp_chrg_price_gross_amt
+        data_type: number
+        description: "{{ doc('shp_chrg_price_gross_amt') }}"
+
+      - name: shp_chrg_price_adj_amt
+        data_type: number
+        description: "{{ doc('shp_chrg_price_adj_amt') }}"
+
+      - name: shp_chrg_price_net_amt
+        data_type: number
+        description: "{{ doc('shp_chrg_price_net_amt') }}"
+
+      - name: shp_chrg_base_amt
+        data_type: number
+        description: "{{ doc('shp_chrg_base_amt') }}"
+
+  - name: int_ship_sims_idw
+    description: ""
+    columns:
+      - name: system_source_code
+        data_type: varchar
+        description: "{{ doc('syst_src_cd') }}"
+
+      - name: mapped_source_code
+        data_type: varchar
+        description: "{{ doc('mapped_source_code') }}"
+
+      - name: system_country_code
+        data_type: varchar
+        description: "{{ doc('system_country_code') }}"
+
+      - name: valid_from
+        data_type: date
+        description: "{{ doc('valid_from') }}"
+
+      - name: revenue_no
+        data_type: number
+        description: "{{ doc('revenue_no') }}"
+
+      - name: extra_charge_id
+        data_type: number
+        description: "{{ doc('extra_charge_id') }}"
+
+      - name: revenue_type
+        data_type: varchar
+        description: "{{ doc('revenue_type') }}"
+
+      - name: shipment_no
+        data_type: float
+        description: "{{ doc('shipment_no') }}"
+
+      - name: international_shipment_no
+        data_type: varchar
+        description: "{{ doc('international_shipment_no') }}"
+
+      - name: billing_account_no
+        data_type: varchar
+        description: "{{ doc('billing_account_no') }}"
+
+      - name: sender_account_no
+        data_type: varchar
+        description: "{{ doc('sender_account_no') }}"
+
+      - name: receiver_account_no
+        data_type: varchar
+        description: "{{ doc('receiver_account_no') }}"
+
+      - name: facility_origin_loc
+        data_type: varchar
+        description: "{{ doc('facility_origin_loc') }}"
+
+      - name: facility_origin
+        data_type: varchar
+        description: "{{ doc('facility_origin') }}"
+
+      - name: origin_country_code
+        data_type: varchar
+        description: "{{ doc('origin_country_code') }}"
+
+      - name: facility_destination_loc
+        data_type: varchar
+        description: "{{ doc('facility_destination_loc') }}"
+
+      - name: facility_destination
+        data_type: varchar
+        description: "{{ doc('facility_destination') }}"
+
+      - name: destination_country_code
+        data_type: varchar
+        description: "{{ doc('destination_country_code') }}"
+
+      - name: billing_facility_loc
+        data_type: varchar
+        description: "{{ doc('billing_facility_loc') }}"
+
+      - name: billing_facility
+        data_type: varchar
+        description: "{{ doc('billing_facility') }}"
+
+      - name: billing_country_code
+        data_type: varchar
+        description: "{{ doc('billing_country_code') }}"
+
+      - name: local_product_code
+        data_type: varchar
+        description: "{{ doc('local_product_code') }}"
+
+      - name: network_product_code
+        data_type: varchar
+        description: "{{ doc('network_product_code') }}"
+
+      - name: shipment_pickup_date
+        data_type: date
+        description: "{{ doc('shipment_pickup_date') }}"
+
+      - name: invoice_no
+        data_type: varchar
+        description: "{{ doc('invoice_no') }}"
+
+      - name: invoice_date
+        data_type: date
+        description: "{{ doc('invoice_date') }}"
+
+      - name: weight_charge
+        data_type: float
+        description: "{{ doc('weight_charge') }}"
+
+      - name: extra_charge
+        data_type: float
+        description: "{{ doc('extra_charge') }}"
+
+      - name: total_charge
+        data_type: float
+        description: "{{ doc('total_charge') }}"
+
+      - name: total_tax
+        data_type: float
+        description: "{{ doc('total_tax') }}"
+
+      - name: total_tax_discount
+        data_type: float
+        description: "{{ doc('total_tax_discount') }}"
+
+      - name: local_currency_code
+        data_type: varchar
+        description: "{{ doc('local_currency_code') }}"
+
+      - name: billing_currency_code
+        data_type: varchar
+        description: "{{ doc('billing_currency_code') }}"
+
+      - name: billing_exchange_rate
+        data_type: float
+        description: "{{ doc('billing_exchange_rate') }}"
+
+      - name: no_of_shipments
+        data_type: number
+        description: "{{ doc('no_of_shipments') }}"
+
+      - name: no_of_pieces
+        data_type: number
+        description: "{{ doc('no_of_pieces') }}"
+
+      - name: no_of_pallets
+        data_type: varchar
+        description: "{{ doc('no_of_pallets') }}"
+
+      - name: billed_weight
+        data_type: float
+        description: "{{ doc('billed_weight') }}"
+
+      - name: customer_weight
+        data_type: varchar
+        description: "{{ doc('customer_weight') }}"
+
+      - name: volumetric_weight
+        data_type: varchar
+        description: "{{ doc('volumetric_weight') }}"
+
+      - name: actual_weight
+        data_type: varchar
+        description: "{{ doc('actual_weight') }}"
+
+      - name: weight_unit
+        data_type: varchar
+        description: "{{ doc('weight_unit') }}"
+
+      - name: weight_flag
+        data_type: varchar
+        description: "{{ doc('weight_flag') }}"
+
+      - name: billed_weight_kg
+        data_type: float
+        description: "{{ doc('billed_weight_kg') }}"
+
+      - name: shipment_actual_volume
+        data_type: varchar
+        description: "{{ doc('shipment_actual_volume') }}"
+
+      - name: shipment_declared_volume
+        data_type: varchar
+        description: "{{ doc('shipment_declared_volume') }}"
+
+      - name: volume_unit
+        data_type: varchar
+        description: "{{ doc('volume_unit') }}"
+
+      - name: billing_type
+        data_type: varchar
+        description: "{{ doc('billing_type') }}"
+
+      - name: payment_method
+        data_type: varchar
+        description: "{{ doc('payment_method') }}"
+
+      - name: card_charge_id
+        data_type: varchar
+        description: "{{ doc('card_charge_id') }}"
+
+      - name: billing_transaction_type
+        data_type: varchar
+        description: "{{ doc('billing_transaction_type') }}"
+
+      - name: record_id
+        data_type: varchar
+        description: "{{ doc('record_id') }}"
+
+      - name: transaction_type
+        data_type: varchar
+        description: "{{ doc('transaction_type') }}"
+
+      - name: adjustment_flag
+        data_type: varchar
+        description: "{{ doc('adjustment_flag') }}"
+
+      - name: accrual_flag
+        data_type: varchar
+        description: "{{ doc('accrual_flag') }}"
+
+      - name: split_billing_flag
+        data_type: varchar
+        description: "{{ doc('split_billing_flag') }}"
+
+      - name: reversal_flag
+        data_type: varchar
+        description: "{{ doc('reversal_flag') }}"
+
+      - name: reversal_reason_code
+        data_type: varchar
+        description: "{{ doc('reversal_reason_code') }}"
+
+      - name: central_rate_code
+        data_type: varchar
+        description: "{{ doc('central_rate_code') }}"
+
+      - name: rate_table_used
+        data_type: varchar
+        description: "{{ doc('rate_table_used') }}"
+
+      - name: inco_term
+        data_type: varchar
+        description: "{{ doc('inco_term') }}"
+
+      - name: pick_up_transportation_mode
+        data_type: varchar
+        description: "{{ doc('pick_up_transportation_mode') }}"
+
+      - name: delivery_transportation_mode
+        data_type: varchar
+        description: "{{ doc('delivery_transportation_mode') }}"
+
+      - name: formal_clearance_indicator
+        data_type: varchar
+        description: "{{ doc('formal_clearance_indicator') }}"
+
+      - name: shipper_name
+        data_type: varchar
+        description: "{{ doc('shipper_name') }}"
+
+      - name: zipcode_origin
+        data_type: varchar
+        description: "{{ doc('zipcode_origin') }}"
+
+      - name: zipcode_destination
+        data_type: varchar
+        description: "{{ doc('zipcode_destination') }}"
+
+      - name: route_code
+        data_type: varchar
+        description: "{{ doc('route_code') }}"
+
+      - name: shipment_area
+        data_type: varchar
+        description: "{{ doc('shipment_area') }}"
+
+      - name: shipment_reference
+        data_type: varchar
+        description: "{{ doc('shipment_reference') }}"
+
+      - name: delivery_density
+        data_type: varchar
+        description: "{{ doc('delivery_density') }}"
+
+      - name: domestic_shipment_flag
+        data_type: varchar
+        description: "{{ doc('domestic_shipment_flag') }}"
+
+      - name: import_export_flag
+        data_type: varchar
+        description: "{{ doc('import_export_flag') }}"
+
+      - name: shp_rec_key
+        data_type: number
+        description: "{{ doc('shp_rec_key') }}"
+
+      - name: shp_rec_key_rule
+        data_type: number
+        description: "{{ doc('shp_rec_key_rule') }}"
+
+      - name: load_source_id
+        data_type: number
+        description: "{{ doc('load_source_id') }}"
+
+      - name: load_line_no
+        data_type: number
+        description: "{{ doc('load_line_no') }}"
+
+      - name: contract_mode
+        data_type: varchar
+        description: "{{ doc('contract_mode') }}"
+
+      - name: contract_participation
+        data_type: varchar
+        description: "{{ doc('contract_participation') }}"
+
+      - name: shipment_no_ops
+        data_type: varchar
+        description: "{{ doc('shipment_no_ops') }}"
+
+      - name: revenue_origin_type
+        data_type: varchar
+        description: "{{ doc('revenue_origin_type') }}"
+
+      - name: revenue_line_status
+        data_type: varchar
+        description: "{{ doc('revenue_line_status') }}"
+
+      - name: billing_type_direction
+        data_type: varchar
+        description: "{{ doc('billing_type_direction') }}"
+
+      - name: ib434_ln_id
+        data_type: number
+        description: "{{ doc('ib434_ln_id') }}"
+
+      - name: ntwk_billing_facility_src
+        data_type: varchar
+        description: "{{ doc('ntwk_billing_facility_src') }}"
+
+      - name: ntwk_owner_facility_src
+        data_type: varchar
+        description: "{{ doc('ntwk_owner_facility_src') }}"
+
+      - name: ntwk_facility_origin_src
+        data_type: varchar
+        description: "{{ doc('ntwk_facility_origin_src') }}"
+
+      - name: ntwk_facility_destination_src
+        data_type: varchar
+        description: "{{ doc('ntwk_facility_destination_src') }}"
+
+      - name: network_product_code_src
+        data_type: varchar
+        description: "{{ doc('network_product_code_src') }}"
+
+      - name: source_code
+        data_type: varchar
+        description: "{{ doc('source_code') }}"
+
+      - name: revenue_source
+        data_type: varchar
+        description: "{{ doc('revenue_source') }}"
+
+      - name: other_tax_amount
+        data_type: float
+        description: "{{ doc('other_tax_amount') }}"
+
+      - name: cb_period_number
+        data_type: date
+        description: "{{ doc('cb_period_number') }}"
+
+      - name: period_end_date
+        data_type: date
+        description: "{{ doc('period_end_date') }}"
+
+      - name: charge_type
+        data_type: varchar
+        description: "{{ doc('charge_type') }}"
+
+      - name: extra_charge_cd
+        data_type: varchar
+        description: "{{ doc('extra_charge_cd') }}"
+
+      - name: extra_charge_tax_cd
+        data_type: varchar
+        description: "{{ doc('extra_charge_tax_cd') }}"
+
+      - name: tcsc_flag
+        data_type: varchar
+        description: "{{ doc('tcsc_flag') }}"
+
+      - name: imp_flag
+        data_type: varchar
+        description: "{{ doc('imp_flag') }}"
+
+      - name: d_tax_cd
+        data_type: varchar
+        description: "{{ doc('d_tax_cd') }}"
+
+      - name: d_tax_insurance_cd
+        data_type: varchar
+        description: "{{ doc('d_tax_insurance_cd') }}"
+
+      - name: d_tax_insurance_perc
+        data_type: number
+        description: "{{ doc('d_tax_insurance_perc') }}"
+
+      - name: discount_cd
+        data_type: varchar
+        description: "{{ doc('discount_cd') }}"
+
+      - name: b_tax
+        data_type: number
+        description: "{{ doc('b_tax') }}"
+
+      - name: billing_currency_code_src
+        data_type: varchar
+        description: "{{ doc('billing_currency_code_src') }}"
+
+      - name: billed_weight_lb
+        data_type: float
+        description: "{{ doc('billed_weight_lb') }}"
+
+      - name: insured_value
+        data_type: float
+        description: "{{ doc('insured_value') }}"
+
+      - name: insrd_val_crncy_cd
+        data_type: varchar
+        description: "{{ doc('insrd_val_crncy_cd') }}"
+
+      - name: inv_type
+        data_type: varchar
+        description: "{{ doc('inv_type') }}"
+
+      - name: split_bill_acct_no
+        data_type: varchar
+        description: "{{ doc('split_bill_acct_no') }}"
+
+      - name: fisc_inv_no
+        data_type: number
+        description: "{{ doc('fisc_inv_no') }}"
+
+      - name: insr_premium_type
+        data_type: varchar
+        description: "{{ doc('insr_premium_type') }}"
+
+      - name: misc_txt
+        data_type: varchar
+        description: "{{ doc('misc_txt') }}"
+
+      - name: discount_flag
+        data_type: varchar
+        description: "{{ doc('discount_flag') }}"
+
+      - name: product_surch_flag
+        data_type: varchar
+        description: "{{ doc('product_surch_flag') }}"
+
+  - name: int_ship_sims_joined
+    description: ""
+    columns:
+      - name: system_source_code
+        data_type: varchar
+        description: "{{ doc('syst_src_cd') }}"
+        data_tests:
+          - not_null 
+          
+      - name: mapped_source_code
+        data_type: varchar
+        description: "{{ doc('mapped_source_code') }}"
+
+      - name: system_country_code
+        data_type: varchar
+        description: "{{ doc('system_country_code') }}"
+
+      - name: valid_from
+        data_type: date
+        description: "{{ doc('valid_from') }}"
+
+      - name: revenue_no
+        data_type: number
+        description: "{{ doc('revenue_no') }}"
+
+      - name: extra_charge_id
+        data_type: number
+        description: "{{ doc('extra_charge_id') }}"
+
+      - name: revenue_type
+        data_type: varchar
+        description: "{{ doc('revenue_type') }}"
+
+      - name: shipment_no
+        data_type: float
+        description: "{{ doc('shipment_no') }}"
+
+      - name: international_shipment_no
+        data_type: varchar
+        description: "{{ doc('international_shipment_no') }}"
+
+      - name: billing_account_no
+        data_type: varchar
+        description: "{{ doc('billing_account_no') }}"
+
+      - name: sender_account_no
+        data_type: varchar
+        description: "{{ doc('sender_account_no') }}"
+
+      - name: receiver_account_no
+        data_type: varchar
+        description: "{{ doc('receiver_account_no') }}"
+
+      - name: facility_origin_loc
+        data_type: varchar
+        description: "{{ doc('facility_origin_loc') }}"
+
+      - name: facility_origin
+        data_type: varchar
+        description: "{{ doc('facility_origin') }}"
+
+      - name: origin_country_code
+        data_type: varchar
+        description: "{{ doc('origin_country_code') }}"
+
+      - name: facility_destination_loc
+        data_type: varchar
+        description: "{{ doc('facility_destination_loc') }}"
+
+      - name: facility_destination
+        data_type: varchar
+        description: "{{ doc('facility_destination') }}"
+
+      - name: destination_country_code
+        data_type: varchar
+        description: "{{ doc('destination_country_code') }}"
+
+      - name: billing_facility_loc
+        data_type: varchar
+        description: "{{ doc('billing_facility_loc') }}"
+
+      - name: billing_facility
+        data_type: varchar
+        description: "{{ doc('billing_facility') }}"
+
+      - name: billing_country_code
+        data_type: varchar
+        description: "{{ doc('billing_country_code') }}"
+
+      - name: local_product_code
+        data_type: varchar
+        description: "{{ doc('local_product_code') }}"
+
+      - name: network_product_code
+        data_type: varchar
+        description: "{{ doc('network_product_code') }}"
+
+      - name: shipment_pickup_date
+        data_type: date
+        description: "{{ doc('shipment_pickup_date') }}"
+
+      - name: invoice_no
+        data_type: varchar
+        description: "{{ doc('invoice_no') }}"
+
+      - name: invoice_date
+        data_type: date
+        description: "{{ doc('invoice_date') }}"
+
+      - name: weight_charge
+        data_type: float
+        description: "{{ doc('weight_charge') }}"
+
+      - name: extra_charge
+        data_type: float
+        description: "{{ doc('extra_charge') }}"
+
+      - name: total_charge
+        data_type: float
+        description: "{{ doc('total_charge') }}"
+
+      - name: total_tax
+        data_type: float
+        description: "{{ doc('total_tax') }}"
+
+      - name: total_tax_discount
+        data_type: float
+        description: "{{ doc('total_tax_discount') }}"
+
+      - name: local_currency_code
+        data_type: varchar
+        description: "{{ doc('local_currency_code') }}"
+
+      - name: billing_currency_code
+        data_type: varchar
+        description: "{{ doc('billing_currency_code') }}"
+
+      - name: billing_exchange_rate
+        data_type: float
+        description: "{{ doc('billing_exchange_rate') }}"
+
+      - name: no_of_shipments
+        data_type: number
+        description: "{{ doc('no_of_shipments') }}"
+
+      - name: no_of_pieces
+        data_type: number
+        description: "{{ doc('no_of_pieces') }}"
+
+      - name: no_of_pallets
+        data_type: varchar
+        description: "{{ doc('no_of_pallets') }}"
+
+      - name: billed_weight
+        data_type: float
+        description: "{{ doc('billed_weight') }}"
+
+      - name: customer_weight
+        data_type: varchar
+        description: "{{ doc('customer_weight') }}"
+
+      - name: volumetric_weight
+        data_type: varchar
+        description: "{{ doc('volumetric_weight') }}"
+
+      - name: actual_weight
+        data_type: varchar
+        description: "{{ doc('actual_weight') }}"
+
+      - name: weight_unit
+        data_type: varchar
+        description: "{{ doc('weight_unit') }}"
+
+      - name: weight_flag
+        data_type: varchar
+        description: "{{ doc('weight_flag') }}"
+
+      - name: billed_weight_kg
+        data_type: float
+        description: "{{ doc('billed_weight_kg') }}"
+
+      - name: shipment_actual_volume
+        data_type: varchar
+        description: "{{ doc('shipment_actual_volume') }}"
+
+      - name: shipment_declared_volume
+        data_type: varchar
+        description: "{{ doc('shipment_declared_volume') }}"
+
+      - name: volume_unit
+        data_type: varchar
+        description: "{{ doc('volume_unit') }}"
+
+      - name: billing_type
+        data_type: varchar
+        description: "{{ doc('billing_type') }}"
+
+      - name: payment_method
+        data_type: varchar
+        description: "{{ doc('payment_method') }}"
+
+      - name: card_charge_id
+        data_type: varchar
+        description: "{{ doc('card_charge_id') }}"
+
+      - name: billing_transaction_type
+        data_type: varchar
+        description: "{{ doc('billing_transaction_type') }}"
+
+      - name: record_id
+        data_type: varchar
+        description: "{{ doc('record_id') }}"
+
+      - name: transaction_type
+        data_type: varchar
+        description: "{{ doc('transaction_type') }}"
+
+      - name: adjustment_flag
+        data_type: varchar
+        description: "{{ doc('adjustment_flag') }}"
+
+      - name: accrual_flag
+        data_type: varchar
+        description: "{{ doc('accrual_flag') }}"
+
+      - name: split_billing_flag
+        data_type: varchar
+        description: "{{ doc('split_billing_flag') }}"
+
+      - name: reversal_flag
+        data_type: varchar
+        description: "{{ doc('reversal_flag') }}"
+
+      - name: reversal_reason_code
+        data_type: varchar
+        description: "{{ doc('reversal_reason_code') }}"
+
+      - name: central_rate_code
+        data_type: varchar
+        description: "{{ doc('central_rate_code') }}"
+
+      - name: rate_table_used
+        data_type: varchar
+        description: "{{ doc('rate_table_used') }}"
+
+      - name: inco_term
+        data_type: varchar
+        description: "{{ doc('inco_term') }}"
+
+      - name: pick_up_transportation_mode
+        data_type: varchar
+        description: "{{ doc('pick_up_transportation_mode') }}"
+
+      - name: delivery_transportation_mode
+        data_type: varchar
+        description: "{{ doc('delivery_transportation_mode') }}"
+
+      - name: formal_clearance_indicator
+        data_type: varchar
+        description: "{{ doc('formal_clearance_indicator') }}"
+
+      - name: shipper_name
+        data_type: varchar
+        description: "{{ doc('shipper_name') }}"
+
+      - name: zipcode_origin
+        data_type: varchar
+        description: "{{ doc('zipcode_origin') }}"
+
+      - name: zipcode_destination
+        data_type: varchar
+        description: "{{ doc('zipcode_destination') }}"
+
+      - name: route_code
+        data_type: varchar
+        description: "{{ doc('route_code') }}"
+
+      - name: shipment_area
+        data_type: varchar
+        description: "{{ doc('shipment_area') }}"
+
+      - name: shipment_reference
+        data_type: varchar
+        description: "{{ doc('shipment_reference') }}"
+
+      - name: delivery_density
+        data_type: varchar
+        description: "{{ doc('delivery_density') }}"
+
+      - name: domestic_shipment_flag
+        data_type: varchar
+        description: "{{ doc('domestic_shipment_flag') }}"
+
+      - name: import_export_flag
+        data_type: varchar
+        description: "{{ doc('import_export_flag') }}"
+
+      - name: shp_rec_key
+        data_type: number
+        description: "{{ doc('shp_rec_key') }}"
+
+      - name: shp_rec_key_rule
+        data_type: number
+        description: "{{ doc('shp_rec_key_rule') }}"
+
+      - name: load_source_id
+        data_type: number
+        description: "{{ doc('load_source_id') }}"
+
+      - name: load_line_no
+        data_type: number
+        description: "{{ doc('load_line_no') }}"
+
+      - name: contract_mode
+        data_type: varchar
+        description: "{{ doc('contract_mode') }}"
+
+      - name: contract_participation
+        data_type: varchar
+        description: "{{ doc('contract_participation') }}"
+
+      - name: shipment_no_ops
+        data_type: varchar
+        description: "{{ doc('shipment_no_ops') }}"
+
+      - name: revenue_origin_type
+        data_type: varchar
+        description: "{{ doc('revenue_origin_type') }}"
+
+      - name: revenue_line_status
+        data_type: varchar
+        description: "{{ doc('revenue_line_status') }}"
+
+      - name: billing_type_direction
+        data_type: varchar
+        description: "{{ doc('billing_type_direction') }}"
+
+      - name: ib434_ln_id
+        data_type: number
+        description: "{{ doc('ib434_ln_id') }}"
+
+      - name: ntwk_billing_facility_src
+        data_type: varchar
+        description: "{{ doc('ntwk_billing_facility_src') }}"
+
+      - name: ntwk_owner_facility_src
+        data_type: varchar
+        description: "{{ doc('ntwk_owner_facility_src') }}"
+
+      - name: ntwk_facility_origin_src
+        data_type: varchar
+        description: "{{ doc('ntwk_facility_origin_src') }}"
+
+      - name: ntwk_facility_destination_src
+        data_type: varchar
+        description: "{{ doc('ntwk_facility_destination_src') }}"
+
+      - name: network_product_code_src
+        data_type: varchar
+        description: "{{ doc('network_product_code_src') }}"
+
+      - name: source_code
+        data_type: varchar
+        description: "{{ doc('source_code') }}"
+
+      - name: revenue_source
+        data_type: varchar
+        description: "{{ doc('revenue_source') }}"
+
+      - name: other_tax_amount
+        data_type: float
+        description: "{{ doc('other_tax_amount') }}"
+
+      - name: cb_period_number
+        data_type: date
+        description: "{{ doc('cb_period_number') }}"
+
+      - name: period_end_date
+        data_type: date
+        description: "{{ doc('period_end_date') }}"
+
+      - name: charge_type
+        data_type: varchar
+        description: "{{ doc('charge_type') }}"
+
+      - name: extra_charge_cd
+        data_type: varchar
+        description: "{{ doc('extra_charge_cd') }}"
+
+      - name: extra_charge_tax_cd
+        data_type: varchar
+        description: "{{ doc('extra_charge_tax_cd') }}"
+
+      - name: tcsc_flag
+        data_type: varchar
+        description: "{{ doc('tcsc_flag') }}"
+
+      - name: imp_flag
+        data_type: varchar
+        description: "{{ doc('imp_flag') }}"
+
+      - name: d_tax_cd
+        data_type: varchar
+        description: "{{ doc('d_tax_cd') }}"
+
+      - name: d_tax_insurance_cd
+        data_type: varchar
+        description: "{{ doc('d_tax_insurance_cd') }}"
+
+      - name: d_tax_insurance_perc
+        data_type: number
+        description: "{{ doc('d_tax_insurance_perc') }}"
+
+      - name: discount_cd
+        data_type: varchar
+        description: "{{ doc('discount_cd') }}"
+
+      - name: b_tax
+        data_type: number
+        description: "{{ doc('b_tax') }}"
+
+      - name: billing_currency_code_src
+        data_type: varchar
+        description: "{{ doc('billing_currency_code_src') }}"
+
+      - name: billed_weight_lb
+        data_type: float
+        description: "{{ doc('billed_weight_lb') }}"
+
+      - name: insured_value
+        data_type: float
+        description: "{{ doc('insured_value') }}"
+
+      - name: insrd_val_crncy_cd
+        data_type: varchar
+        description: "{{ doc('insrd_val_crncy_cd') }}"
+
+      - name: inv_type
+        data_type: varchar
+        description: "{{ doc('inv_type') }}"
+
+      - name: split_bill_acct_no
+        data_type: varchar
+        description: "{{ doc('split_bill_acct_no') }}"
+
+      - name: fisc_inv_no
+        data_type: number
+        description: "{{ doc('fisc_inv_no') }}"
+
+      - name: insr_premium_type
+        data_type: varchar
+        description: "{{ doc('insr_premium_type') }}"
+
+      - name: misc_txt
+        data_type: varchar
+        description: "{{ doc('misc_txt') }}"
+
+      - name: discount_flag
+        data_type: varchar
+        description: "{{ doc('discount_flag') }}"
+
+      - name: product_surch_flag
+        data_type: varchar
+        description: "{{ doc('product_surch_flag') }}"
+
+      - name: sim_type
+        data_type: varchar
+        description: "{{ doc('sim_type') }}"
+
+      - name: shp_chrg_price_gross_amt
+        data_type: number
+        description: "{{ doc('shp_chrg_price_gross_amt') }}"
+
+      - name: shp_chrg_price_adj_amt
+        data_type: number
+        description: "{{ doc('shp_chrg_price_adj_amt') }}"
+
+      - name: shp_chrg_price_net_amt
+        data_type: number
+        description: "{{ doc('shp_chrg_price_net_amt') }}"
+
+      - name: shp_chrg_base_amt
+        data_type: number
+        description: "{{ doc('shp_chrg_base_amt') }}"

@@ -1,0 +1,31 @@
+version: 2 
+
+snapshots: 
+  - name: dd_progress_snapshot
+    relation: ref('stg_dd_reports__dd_progress')
+    description: "Snapshot of dd progress to track changes"
+    config: 
+      strategy: check
+      dbt_valid_to_current: date '9999-12-01'
+      unique_key: [ctry_cd,payer_country,cpa_key,discounted_products_group]
+      hard_deletes: invalidate
+      check_cols: ['report_dtm','discount_key','discount_pid','measurement_period',
+                  'discounting_period','threshold_type','ramp_up_period',
+                  'ramp_up_end_date','initial_discount_amount',
+                  'initial_discount_percent','initial_discount_period',
+                  'discount_tiers_and_values','last_review_date',
+                  'last_review_shipment_count','last_review_revenue_count',
+                  'current_discount_amount','current_discount_percent',
+                  'next_discount_amount','next_discount_percent','next_review_due_date',
+                  'next_measurement_months','next_measurement_start_date',
+                  'shipment_progress_count','revenue_progress_count',
+                  'shipment_gap_to_current_level','revenue_gap_to_current_level',
+                  'shipment_gap_to_next_level','revenue_gap_to_next_level',
+                  'exported_to_file']
+      transient: false
+      snapshot_meta_column_names:
+        dbt_scd_id: dbt_scd_id
+        dbt_valid_from: valid_from_ts
+        dbt_valid_to: valid_to_ts
+        dbt_updated_at: updated_ts
+      
