@@ -1,0 +1,6 @@
+dbt-core>=1.9,<2.0
+dbt-snowflake>=1.9,<2.0
+sqlfluff
+sqlfluff-templater-dbt
+urllib3<2
+charset-normalizer<4

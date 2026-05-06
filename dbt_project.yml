@@ -1,0 +1,76 @@
+# Name your project! Project names should contain only lowercase characters
+# and underscores. A good package name should reflect your organization's
+# name or the intended use of these models
+name: "gs_project"
+version: "1.0.0"
+
+# This setting configures which "profile" dbt uses for this project.
+profile: "gs_project"
+
+dbt-cloud:
+  defer-env-id: null
+  
+
+# These configurations specify where dbt should look for different types of files.
+# The `model-paths` config, for example, states that models in this project can be
+# found in the "models/" directory. You probably won't need to change these!
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+docs-paths: ["."]
+
+clean-targets: # directories to be removed by `dbt clean`
+  - "target"
+  - "dbt_packages"
+
+# Configuring models
+# Full documentation: https://docs.getdbt.com/docs/configuring-models
+
+# In this example config, we tell dbt to build all models in the example/
+# directory as views. These settings can be overridden in the individual model
+# files using the `{{ config(...) }}` macro.
+
+models:
+  il:
+
+    +pre-hook:
+      - "{{ set_query_tag() }}"
+
+    +post-hook:
+      - "{{ set_query_tag() }}"
+
+    +copy_grants: true
+
+    staging:
+      +database: "L1_STAGING"
+      +schema: il
+      +materialized: view
+      
+    integration:
+      +database: "L2_INTEGRATION"
+      +schema: il      
+      +materialized: view
+
+    mart:
+      +database: "L3_MART"
+      +schema: il
+      +materialized: table
+      +transient: false
+      +grants:
+        select: "{{ ['analyst'] if target.name == 'prod' else [] }}"
+
+
+snapshots:
+  il:
+    +database: "L2_INTEGRATION"
+    +schema: il
+    +transient: false
+
+    +pre-hook:
+      - "{{ set_query_tag() }}"
+
+    +post-hook:
+      - "{{ set_query_tag() }}"
