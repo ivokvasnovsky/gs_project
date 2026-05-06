@@ -1,0 +1,218 @@
+version: 2
+
+models:
+  - name: fct_dd_progress_EUR
+    description: "fact table dd progress"
+    constraints:
+      - type: foreign_key
+        columns: [cpa_id]
+        to: ref('dim_customers') 
+
+    columns:
+      - name: ctry_cd
+        data_type: varchar
+        description: "{{ doc('ctry_cd') }}"
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_geo_hier')
+                field: ctry_cd
+
+      - name: cpa_id
+        data_type: varchar
+        description: "{{ doc('cpa_id') }}"
+        data_tests:
+          - not_null        
+          - relationships:
+              arguments:
+                to: ref('dim_customers')
+                field: cpa_id
+
+      - name: report_ts
+        data_type: timestamp_ntz
+        description: "{{ doc('report_ts') }}"
+
+      - name: discount_key
+        data_type: varchar
+        description: "{{ doc('discount_key') }}"
+
+      - name: payer_ctry_cd
+        data_type: varchar
+        description: "{{ doc('payer_ctry_cd') }}"
+
+      - name: discount_pid
+        data_type: varchar
+        description: "{{ doc('discount_pid') }}"
+
+      - name: measurement_period
+        data_type: number
+        description: "{{ doc('measurement_period') }}"
+
+      - name: discounting_period
+        data_type: number
+        description: "{{ doc('discounting_period') }}"
+
+      - name: discounted_products_grp
+        data_type: varchar
+        description: "{{ doc('discounted_products_grp') }}"
+
+      - name: threshold_type
+        data_type: varchar
+        description: "{{ doc('threshold_type') }}"
+
+      - name: ramp_up_period
+        data_type: number
+        description: "{{ doc('ramp_up_period') }}"
+
+      - name: ramp_up_end_dt
+        data_type: date
+        description: "{{ doc('ramp_up_end_dt') }}"
+
+      - name: currency_cd
+        data_type: varchar
+        description: "{{ doc('currency_cd') }}"
+
+      - name: initial_discount_amt
+        data_type: number
+        description: "{{ doc('initial_discount_amt') }}"
+
+      - name: initial_discount_pct
+        data_type: number
+        description: "{{ doc('initial_discount_pct') }}"
+
+      - name: initial_discount_period
+        data_type: number
+        description: "{{ doc('initial_discount_period') }}"
+
+      - name: discount_tiers_and_values
+        data_type: varchar
+        description: "{{ doc('discount_tiers_and_values') }}"
+
+      - name: last_review_dt
+        data_type: date
+        description: "{{ doc('last_review_dt') }}"
+
+      - name: currency_date
+        data_type: date
+        description: "{{ doc('currency_date') }}"
+
+      - name: last_review_shipment_cnt
+        data_type: number
+        description: "{{ doc('last_review_shipment_cnt') }}"
+
+      - name: last_review_revenue_amt
+        data_type: number
+        description: "{{ doc('last_review_revenue_amt') }}"
+
+      - name: current_discount_amt
+        data_type: number
+        description: "{{ doc('current_discount_amt') }}"
+
+      - name: current_discount_pct
+        data_type: number
+        description: "{{ doc('current_discount_pct') }}"
+
+      - name: next_discount_amt
+        data_type: number
+        description: "{{ doc('next_discount_amt') }}"
+
+      - name: next_discount_pct
+        data_type: number
+        description: "{{ doc('next_discount_pct') }}"
+
+      - name: next_review_due_dt
+        data_type: date
+        description: "{{ doc('next_review_due_dt') }}"
+
+      - name: next_measurement_months
+        data_type: number
+        description: "{{ doc('next_measurement_months') }}"
+
+      - name: next_measurement_start_dt
+        data_type: date
+        description: "{{ doc('next_measurement_start_dt') }}"
+
+      - name: shipment_progress_cnt
+        data_type: number
+        description: "{{ doc('shipment_progress_cnt') }}"
+
+      - name: revenue_progress_amt
+        data_type: number
+        description: "{{ doc('revenue_progress_amt') }}"
+
+      - name: shipment_gap_to_current_lvl
+        data_type: number
+        description: "{{ doc('shipment_gap_to_current_lvl') }}"
+
+      - name: revenue_gap_to_current_lvl
+        data_type: number
+        description: "{{ doc('revenue_gap_to_current_lvl') }}"
+
+      - name: shipment_gap_to_next_lvl
+        data_type: number
+        description: "{{ doc('shipment_gap_to_next_lvl') }}"
+
+      - name: revenue_gap_to_next_lvl
+        data_type: number
+        description: "{{ doc('revenue_gap_to_next_lvl') }}"
+
+      - name: exported_to_file
+        data_type: varchar
+        description: "{{ doc('exported_to_file') }}"
+
+      - name: valid_from_ts
+        data_type: timestamp_ntz
+        description: "{{ doc('valid_from_ts') }}"
+
+      - name: valid_to_ts
+        data_type: timestamp_ntz
+        description: "{{ doc('valid_to_ts') }}"
+
+      - name: file_nm
+        data_type: varchar
+        description: "{{ doc('file_nm') }}"
+
+      - name: file_create_ts
+        data_type: timestamp_ntz
+        description: "{{ doc('file_create_ts') }}"
+
+      - name: inserted_ts
+        data_type: timestamp_ltz
+        description: "{{ doc('inserted_ts') }}"
+
+      - name: updated_ts
+        data_type: timestamp_ltz
+        description: "{{ doc('updated_ts') }}"
+
+      - name: inserted_by
+        data_type: varchar
+        description: "{{ doc('inserted_by') }}"
+
+      - name: updated_by
+        data_type: varchar
+        description: "{{ doc('updated_by') }}"
+
+      - name: filename
+        data_type: varchar
+        description: "{{ doc('filename') }}"
+
+      - name: initial_discount_amt_eur
+        data_type: number
+        description: "{{ doc('initial_discount_amt_eur') }}"
+
+      - name: last_review_revenue_amt_eur
+        data_type: number
+        description: "{{ doc('last_review_revenue_amt_eur') }}"
+
+      - name: current_discount_amt_eur
+        data_type: number
+        description: "{{ doc('current_discount_amt_eur') }}"
+
+      - name: next_discount_amt_eur
+        data_type: number
+        description: "{{ doc('next_discount_amt_eur') }}"
+
+      - name: revenue_progress_amt_eur
+        data_type: number
+        description: "{{ doc('revenue_progress_amt_eur') }}"

@@ -1,0 +1,528 @@
+version: 2
+
+models:
+  - name: fct_ship_simulations_EUR
+    description: "Fact table containing shipment simulation revenue lines with all monetary amounts converted to EUR using BER exchange rates."
+    constraints:
+      - type: foreign_key
+        columns: [origin_country_code]
+        to: ref('dim_geo_hier')
+    
+    columns:
+      - name: system_source_code
+        data_type: varchar
+        description: "{{ doc('syst_src_cd') }}"
+        data_tests:
+          - not_null
+
+      - name: mapped_source_code
+        data_type: varchar
+        description: "{{ doc('mapped_source_code') }}"
+
+      - name: system_country_code
+        data_type: varchar
+        description: "{{ doc('system_country_code') }}"
+
+      - name: valid_from
+        data_type: date
+        description: "{{ doc('valid_from') }}"
+
+      - name: revenue_no
+        data_type: number
+        description: "{{ doc('revenue_no') }}"
+
+      - name: extra_charge_id
+        data_type: number
+        description: "{{ doc('extra_charge_id') }}"
+
+      - name: revenue_type
+        data_type: varchar
+        description: "{{ doc('revenue_type') }}"
+
+      - name: shipment_no
+        data_type: float
+        description: "{{ doc('shipment_no') }}"
+
+      - name: international_shipment_no
+        data_type: varchar
+        description: "{{ doc('international_shipment_no') }}"
+
+      - name: billing_account_no
+        data_type: varchar
+        description: "{{ doc('billing_account_no') }}"
+
+      - name: sender_account_no
+        data_type: varchar
+        description: "{{ doc('sender_account_no') }}"
+
+      - name: receiver_account_no
+        data_type: varchar
+        description: "{{ doc('receiver_account_no') }}"
+
+      - name: facility_origin_loc
+        data_type: varchar
+        description: "{{ doc('facility_origin_loc') }}"
+
+      - name: facility_origin
+        data_type: varchar
+        description: "Name or identifier of the origin facility."
+
+      - name: origin_country_code
+        data_type: varchar
+        description: "ISO country code of the shipment origin."
+
+      - name: facility_destination_loc
+        data_type: varchar
+        description: "Location code of the destination facility."
+
+      - name: facility_destination
+        data_type: varchar
+        description: "Name or identifier of the destination facility."
+
+      - name: destination_country_code
+        data_type: varchar
+        description: "ISO country code of the shipment destination."
+
+      - name: billing_facility_loc
+        data_type: varchar
+        description: "Location code of the facility responsible for billing."
+
+      - name: billing_facility
+        data_type: varchar
+        description: "Name or identifier of the billing facility."
+
+      - name: billing_country_code
+        data_type: varchar
+        description: "ISO country code of the billing facility."
+
+      - name: local_product_code
+        data_type: varchar
+        description: "Product code as used in the local/source system."
+
+      - name: network_product_code
+        data_type: varchar
+        description: "Harmonized network-level product code."
+
+      - name: shipment_pickup_date
+        data_type: date
+        description: "Date the shipment was picked up."
+
+      - name: invoice_no
+        data_type: varchar
+        description: "Invoice number associated with the revenue line."
+
+      - name: invoice_date
+        data_type: date
+        description: "Date the invoice was issued."
+
+      - name: weight_charge
+        data_type: float
+        description: "Charge based on shipment weight in local currency."
+
+      - name: extra_charge
+        data_type: float
+        description: "Additional surcharge amount in local currency."
+
+      - name: total_charge
+        data_type: float
+        description: "Total charge (weight + extra) in local currency."
+
+      - name: total_tax
+        data_type: float
+        description: "Total tax amount applied to the shipment in local currency."
+
+      - name: total_tax_discount
+        data_type: float
+        description: "Tax discount amount applied in local currency."
+
+      - name: local_currency_code
+        data_type: varchar
+        description: "ISO currency code used for local charges."
+
+      - name: billing_currency_code
+        data_type: varchar
+        description: "ISO currency code used for billing."
+
+      - name: billing_exchange_rate
+        data_type: float
+        description: "Exchange rate applied at billing time."
+
+      - name: no_of_shipments
+        data_type: number
+        description: "Number of shipments on the revenue line."
+
+      - name: no_of_pieces
+        data_type: number
+        description: "Total number of pieces in the shipment."
+
+      - name: no_of_pallets
+        data_type: varchar
+        description: "Number of pallets in the shipment."
+
+      - name: billed_weight
+        data_type: float
+        description: "Weight used for billing purposes."
+
+      - name: customer_weight
+        data_type: varchar
+        description: "Weight as declared by the customer."
+
+      - name: volumetric_weight
+        data_type: varchar
+        description: "Dimensional/volumetric weight of the shipment."
+
+      - name: actual_weight
+        data_type: varchar
+        description: "Actual physical weight of the shipment."
+
+      - name: weight_unit
+        data_type: varchar
+        description: "Unit of measurement for weight (e.g. KG, LB)."
+
+      - name: weight_flag
+        data_type: varchar
+        description: "Flag indicating the weight basis used for billing."
+
+      - name: billed_weight_kg
+        data_type: float
+        description: "Billed weight converted to kilograms."
+
+      - name: shipment_actual_volume
+        data_type: varchar
+        description: "Actual volume of the shipment."
+
+      - name: shipment_declared_volume
+        data_type: varchar
+        description: "Volume as declared by the customer."
+
+      - name: volume_unit
+        data_type: varchar
+        description: "Unit of measurement for volume."
+
+      - name: billing_type
+        data_type: varchar
+        description: "Type of billing applied to the shipment."
+
+      - name: payment_method
+        data_type: varchar
+        description: "Payment method used for the shipment."
+
+      - name: card_charge_id
+        data_type: varchar
+        description: "Identifier for card-based charges."
+
+      - name: billing_transaction_type
+        data_type: varchar
+        description: "Type of billing transaction (e.g. charge, credit)."
+
+      - name: record_id
+        data_type: varchar
+        description: "Unique record identifier from the source system."
+
+      - name: transaction_type
+        data_type: varchar
+        description: "Type of transaction recorded."
+
+      - name: adjustment_flag
+        data_type: varchar
+        description: "Flag indicating whether the record is an adjustment."
+
+      - name: accrual_flag
+        data_type: varchar
+        description: "Flag indicating whether the record is an accrual entry."
+
+      - name: split_billing_flag
+        data_type: varchar
+        description: "Flag indicating whether billing is split across accounts."
+
+      - name: reversal_flag
+        data_type: varchar
+        description: "Flag indicating whether the record reverses a prior entry."
+
+      - name: reversal_reason_code
+        data_type: varchar
+        description: "Code describing the reason for a reversal."
+
+      - name: central_rate_code
+        data_type: varchar
+        description: "Central rate code used for pricing."
+
+      - name: rate_table_used
+        data_type: varchar
+        description: "Identifier of the rate table applied to the shipment."
+
+      - name: inco_term
+        data_type: varchar
+        description: "Incoterm governing delivery responsibilities (e.g. DDP, DAP)."
+
+      - name: pick_up_transportation_mode
+        data_type: varchar
+        description: "Transportation mode used for pick-up leg."
+
+      - name: delivery_transportation_mode
+        data_type: varchar
+        description: "Transportation mode used for delivery leg."
+
+      - name: formal_clearance_indicator
+        data_type: varchar
+        description: "Indicator for whether formal customs clearance is required."
+
+      - name: shipper_name
+        data_type: varchar
+        description: "Name of the shipper/sender."
+
+      - name: zipcode_origin
+        data_type: varchar
+        description: "Postal/zip code of the origin address."
+
+      - name: zipcode_destination
+        data_type: varchar
+        description: "Postal/zip code of the destination address."
+
+      - name: route_code
+        data_type: varchar
+        description: "Code identifying the shipment route."
+
+      - name: shipment_area
+        data_type: varchar
+        description: "Geographic area classification of the shipment."
+
+      - name: shipment_reference
+        data_type: varchar
+        description: "Customer-provided reference number for the shipment."
+
+      - name: delivery_density
+        data_type: varchar
+        description: "Density category used for delivery pricing."
+
+      - name: domestic_shipment_flag
+        data_type: varchar
+        description: "Flag indicating whether the shipment is domestic."
+
+      - name: import_export_flag
+        data_type: varchar
+        description: "Flag indicating whether the shipment is an import or export."
+
+      - name: shp_rec_key
+        data_type: number
+        description: "Surrogate key for the shipment record in the source system."
+
+      - name: shp_rec_key_rule
+        data_type: number
+        description: "Rule identifier used to derive the shipment record key."
+
+      - name: load_source_id
+        data_type: number
+        description: "Identifier of the data load source batch."
+
+      - name: load_line_no
+        data_type: number
+        description: "Line number within the data load batch."
+
+      - name: contract_mode
+        data_type: varchar
+        description: "Mode of contract applied to the shipment."
+
+      - name: contract_participation
+        data_type: varchar
+        description: "Participation type under the applicable contract."
+
+      - name: shipment_no_ops
+        data_type: varchar
+        description: "Operations system shipment number."
+
+      - name: revenue_origin_type
+        data_type: varchar
+        description: "Origin type of the revenue record."
+
+      - name: revenue_line_status
+        data_type: varchar
+        description: "Status of the revenue line (e.g. active, reversed)."
+
+      - name: billing_type_direction
+        data_type: varchar
+        description: "Direction of billing (e.g. sender-pays, receiver-pays)."
+
+      - name: ib434_ln_id
+        data_type: number
+        description: "Internal IB434 line identifier."
+
+      - name: ntwk_billing_facility_src
+        data_type: varchar
+        description: "Source network billing facility code."
+
+      - name: ntwk_owner_facility_src
+        data_type: varchar
+        description: "Source network owner facility code."
+
+      - name: ntwk_facility_origin_src
+        data_type: varchar
+        description: "Source network origin facility code."
+
+      - name: ntwk_facility_destination_src
+        data_type: varchar
+        description: "Source network destination facility code."
+
+      - name: network_product_code_src
+        data_type: varchar
+        description: "Network product code as received from the source system."
+
+      - name: source_code
+        data_type: varchar
+        description: "Raw source system identifier code."
+
+      - name: revenue_source
+        data_type: varchar
+        description: "Source of the revenue record (e.g. system name)."
+
+      - name: other_tax_amount
+        data_type: float
+        description: "Tax amounts not covered by standard tax fields, in local currency."
+
+      - name: cb_period_number
+        data_type: date
+        description: "Chargeback period number/date."
+
+      - name: period_end_date
+        data_type: date
+        description: "End date of the reporting/billing period."
+
+      - name: charge_type
+        data_type: varchar
+        description: "Type of charge (e.g. base, surcharge, tax)."
+
+      - name: extra_charge_cd
+        data_type: varchar
+        description: "Code identifying the type of extra/surcharge."
+
+      - name: extra_charge_tax_cd
+        data_type: varchar
+        description: "Tax code applicable to the extra charge."
+
+      - name: tcsc_flag
+        data_type: varchar
+        description: "Flag indicating TCSC (Transport Cost Surcharge) applicability."
+
+      - name: imp_flag
+        data_type: varchar
+        description: "Flag indicating import-related processing."
+
+      - name: d_tax_cd
+        data_type: varchar
+        description: "Duty tax code."
+
+      - name: d_tax_insurance_cd
+        data_type: varchar
+        description: "Insurance-related duty tax code."
+
+      - name: d_tax_insurance_perc
+        data_type: number
+        description: "Insurance duty tax percentage."
+
+      - name: discount_cd
+        data_type: varchar
+        description: "Discount code applied to the revenue line."
+
+      - name: b_tax
+        data_type: number
+        description: "Base tax amount."
+
+      - name: billing_currency_code_src
+        data_type: varchar
+        description: "Billing currency code as received from the source system."
+
+      - name: billed_weight_lb
+        data_type: float
+        description: "Billed weight in pounds."
+
+      - name: insured_value
+        data_type: float
+        description: "Declared insured value of the shipment."
+
+      - name: insrd_val_crncy_cd
+        data_type: varchar
+        description: "Currency code of the insured value."
+
+      - name: inv_type
+        data_type: varchar
+        description: "Invoice type."
+
+      - name: split_bill_acct_no
+        data_type: varchar
+        description: "Account number used when billing is split."
+
+      - name: fisc_inv_no
+        data_type: number
+        description: "Fiscal invoice number."
+
+      - name: insr_premium_type
+        data_type: varchar
+        description: "Type of insurance premium applied."
+
+      - name: misc_txt
+        data_type: varchar
+        description: "Miscellaneous free-text field."
+
+      - name: discount_flag
+        data_type: varchar
+        description: "Flag indicating whether a discount is applied."
+
+      - name: product_surch_flag
+        data_type: varchar
+        description: "Flag indicating whether a product surcharge is applied."
+
+      - name: sim_type
+        data_type: varchar
+        description: "{{ doc('sim_type') }}"
+
+      - name: shp_chrg_price_gross_amt
+        data_type: number
+        description: "{{ doc('shp_chrg_price_gross_amt') }}"
+
+      - name: shp_chrg_price_adj_amt
+        data_type: number
+        description: "{{ doc('shp_chrg_price_adj_amt') }}"
+
+      - name: shp_chrg_price_net_amt
+        data_type: number
+        description: "{{ doc('shp_chrg_price_net_amt') }}"
+
+      - name: shp_chrg_base_amt
+        data_type: number
+        description: "{{ doc('shp_chrg_base_amt') }}"
+
+      - name: shp_chrg_price_gross_amt_eur
+        data_type: number
+        description: "Gross shipment charge price converted to EUR using BER exchange rate."
+
+      - name: shp_chrg_price_adj_amt_eur
+        data_type: number
+        description: "Adjusted shipment charge price converted to EUR using BER exchange rate."
+
+      - name: shp_chrg_price_net_amt_eur
+        data_type: number
+        description: "Net shipment charge price converted to EUR using BER exchange rate."
+
+      - name: shp_chrg_base_amt_eur
+        data_type: number
+        description: "Base shipment charge amount converted to EUR using BER exchange rate."
+
+      - name: weight_charge_eur
+        data_type: float
+        description: "Weight charge converted to EUR using BER exchange rate."
+
+      - name: extra_charge_eur
+        data_type: float
+        description: "Extra/surcharge amount converted to EUR using BER exchange rate."
+
+      - name: total_charge_eur
+        data_type: float
+        description: "Total charge converted to EUR using BER exchange rate."
+
+      - name: inserted_ts
+        data_type: timestamp_ltz
+        description: "{{ doc('inserted_ts') }}"
+
+      - name: inserted_by
+        data_type: varchar
+        description: "{{ doc('inserted_by') }}"
