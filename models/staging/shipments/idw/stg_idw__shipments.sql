@@ -19,4 +19,3 @@ dedup as (
 )
 
 select * from dedup
-

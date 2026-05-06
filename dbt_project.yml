@@ -34,7 +34,7 @@ clean-targets: # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 
 models:
-  il:
+  gs_project:
 
     +pre-hook:
       - "{{ set_query_tag() }}"
@@ -64,7 +64,7 @@ models:
 
 
 snapshots:
-  il:
+  gs_project:
     +database: "L2_INTEGRATION"
     +schema: il
     +transient: false
