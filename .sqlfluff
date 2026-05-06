@@ -1,0 +1,29 @@
+[sqlfluff]
+dialect = snowflake
+templater = jinja
+runaway_limit = 10
+max_line_length = 85
+indent_unit = space
+ignore_paths = dbt_packages/, packages/, target/, logs/, macros/, tests/, analyses/
+ignore = templating
+exclude_rules = ST11,AL01,AL02,AL03,AL04,AL05,AL06,AL07,AL08,AL09
+
+[sqlfluff:indentation]
+tab_space_size = 4
+
+[sqlfluff:layout:type:comma]
+spacing_before = touch
+line_position = trailing
+
+[sqlfluff:rules:capitalisation.keywords] 
+capitalisation_policy = lower
+
+
+[sqlfluff:rules:capitalisation.functions]
+capitalisation_policy = lower
+
+[sqlfluff:rules:capitalisation.literals]
+capitalisation_policy = lower
+
+[sqlfluff:rules:ambiguous.column_references]  # Number in group by
+group_by_and_order_by_style = implicit
