@@ -1,0 +1,68 @@
+name: dbt CD
+
+on:
+  #workflow_dispatch:
+  push:
+    branches: [ main ]
+
+
+permissions:
+  contents: write
+
+jobs:
+  dbt-cd:
+    runs-on: ubuntu-latest
+    environment: prod
+
+    env:
+      SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+      SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
+      SNOWFLAKE_SCHEMA: ${{ secrets.SNOWFLAKE_SCHEMA }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.0'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: dbt deps
+        run: dbt deps
+
+      - name: Create profiles.yml
+        run: |
+          mkdir -p ~/.dbt
+          echo "${{ vars.DBT_PROFILES }}" > ~/.dbt/profiles.yml
+          sed -i "s/password:.*/password: ${{ secrets.SNOWFLAKE_PASSWORD }}/" ~/.dbt/profiles.yml
+
+      - name: dbt debug
+        run: dbt debug --target prod
+
+      - name: dbt build
+        run: dbt build --target prod
+
+      - name: dbt docs generate
+        run: dbt docs generate --target prod
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: artifacts and docs to S3
+        run: | 
+          aws s3 cp target/manifest.json s3://${{ vars.DBT_ARTIFACT_S3_BUCKET }}/manifest.json
+          aws s3 cp target/catalog.json s3://${{ vars.DBT_ARTIFACT_S3_BUCKET }}/catalog.json
+          aws s3 cp target/index.html s3://${{ vars.DBT_ARTIFACT_S3_BUCKET }}/index.html
+          aws s3 cp target/run_results.json s3://${{ vars.DBT_ARTIFACT_S3_BUCKET }}/run-results.json        
+        

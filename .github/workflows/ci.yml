@@ -1,0 +1,76 @@
+name: dbt CI 
+
+on:
+  #workflow_dispatch:
+  pull_request:
+    branches: [ main ]
+
+
+permissions:
+  contents: read
+
+
+jobs:
+  dbt-ci:
+    runs-on: ubuntu-latest
+    environment: test
+    
+    env:
+      SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+      SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
+      SNOWFLAKE_SCHEMA: PR_${{ github.event.pull_request.number }}
+    
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4.2.0
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+
+      - name: Setup Python
+        uses: actions/setup-python@v5.1.0
+        with:
+          python-version: '3.12.0'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: dbt deps
+        run: dbt deps
+
+      - name: Create profiles.yml
+        run: |
+            mkdir -p ~/.dbt
+            echo "${{ vars.DBT_PROFILES }}" > ~/.dbt/profiles.yml
+      
+      - name: Lint SQL
+        run: sqlfluff lint models/
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Download manifest.json from S3
+        run: |
+          mkdir -p ./state
+          aws s3 cp s3://${{ vars.DBT_ARTIFACT_S3_BUCKET }}/manifest.json ./state/manifest.json
+
+      - name: dbt debug
+        run: dbt debug --target test
+        
+      - name: clone incremental models 	
+        run: |
+          dbt clone --target test --select state:modified+,config.materialized:incremental,state:old --state ./state
+
+      - name: dbt build with defer
+        run: |
+          dbt build --target test --select state:modified+ --defer --state ./state --favor-state
+      
+      - name: Drop schema after CI
+        if: always()
+        run: | 
+          dbt run-operation drop_schemas_all_layers --args "{'schema': '${{ env.SNOWFLAKE_SCHEMA }}'}" --target test
