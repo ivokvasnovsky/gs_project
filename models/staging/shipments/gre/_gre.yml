@@ -1,0 +1,297 @@
+version: 2
+
+models:
+
+  - name: stg_gre__linkage
+    description: "gre linkage"
+    columns:
+      - name: gre_uniq_id
+        data_type: varchar
+        description: "{{ doc('gre_uniq_id') }}"
+
+      - name: awb_no
+        data_type: varchar
+        description: "{{ doc('awb_no') }}"
+
+      - name: qual_no
+        data_type: number
+        description: "{{ doc('qual_no') }}"
+
+      - name: lnk_fl
+        data_type: number
+        description: "{{ doc('lnk_fl') }}"
+
+      - name: valid_from
+        data_type: date
+        description: "{{ doc('valid_from') }}"
+
+      - name: system_source_code
+        data_type: varchar
+        description: "{{ doc('syst_src_cd') }}"
+
+      - name: ctry_cd
+        data_type: varchar
+        description: "{{ doc('ctry_cd') }}"
+        data_tests:
+          - not_null
+
+      - name: revenue_no
+        data_type: varchar
+        description: "{{ doc('revenue_no') }}"
+
+      - name: gre_ctry_flg
+        data_type: varchar
+        description: "{{ doc('gre_ctry_flg') }}"
+
+      - name: lnk_flg
+        data_type: varchar
+        description: "{{ doc('lnk_flg') }}"
+
+      - name: lnk_excl_flg
+        data_type: varchar
+        description: "{{ doc('lnk_excl_flg') }}"
+
+      - name: acct_no
+        data_type: varchar
+        description: "{{ doc('acct_no') }}"
+
+      - name: clear_flg_pm
+        data_type: varchar
+        description: "{{ doc('clear_flg_pm') }}"
+
+      - name: clear_flg_cm
+        data_type: varchar
+        description: "{{ doc('clear_flg_cm') }}"
+
+      - name: gre_uniq_id_orig
+        data_type: varchar
+        description: "{{ doc('gre_uniq_id_orig') }}"
+
+      - name: gre_uniq_id_dn
+        data_type: varchar
+        description: "{{ doc('gre_uniq_id_dn') }}"
+
+      - name: cn_flg
+        data_type: varchar
+        description: "{{ doc('cn_flg') }}"
+
+      - name: revenue_flg
+        data_type: varchar
+        description: "{{ doc('revenue_flg') }}"
+
+      - name: revenue_type
+        data_type: varchar
+        description: "{{ doc('revenue_type') }}"
+
+  - name: stg_gre__shipments
+    description: "gre shipments"
+    columns:
+      - name: sim_type
+        data_type: varchar
+        description: "{{ doc('sim_type') }}"
+
+      - name: ctry_cd
+        data_type: varchar
+        description: "{{ doc('ctry_cd') }}"
+
+      - name: load_set_id
+        data_type: number
+        description: "{{ doc('load_set_id') }}"
+
+      - name: file_nm
+        data_type: varchar
+        description: "{{ doc('file_nm') }}"
+
+      - name: load_proc_id
+        data_type: number
+        description: "{{ doc('load_proc_id') }}"
+
+      - name: gre_uniq_id
+        data_type: varchar
+        description: "{{ doc('gre_uniq_id') }}"
+        data_tests: 
+          - not_null 
+          
+      - name: awb_no
+        data_type: number
+        description: "{{ doc('awb_no') }}"
+
+      - name: qual_no
+        data_type: number
+        description: "{{ doc('qual_no') }}"
+
+      - name: bill_term_type
+        data_type: varchar
+        description: "{{ doc('bill_term_type') }}"
+
+      - name: orig_srv_area_cd
+        data_type: varchar
+        description: "{{ doc('orig_srv_area_cd') }}"
+
+      - name: orig_fclty_cd
+        data_type: varchar
+        description: "{{ doc('orig_fclty_cd') }}"
+
+      - name: orig_srv_area_loc_cd
+        data_type: varchar
+        description: "{{ doc('orig_srv_area_loc_cd') }}"
+
+      - name: dest_srv_area_cd
+        data_type: varchar
+        description: "{{ doc('dest_srv_area_cd') }}"
+
+      - name: dest_fclty_cd
+        data_type: varchar
+        description: "{{ doc('dest_fclty_cd') }}"
+
+      - name: dest_srv_area_loc_cd
+        data_type: varchar
+        description: "{{ doc('dest_srv_area_loc_cd') }}"
+
+      - name: netwk_prod_cd
+        data_type: varchar
+        description: "{{ doc('netwk_prod_cd') }}"
+
+      - name: lcl_prod_cd
+        data_type: varchar
+        description: "{{ doc('lcl_prod_cd') }}"
+
+      - name: dclr_pcs_amt
+        data_type: number
+        description: "{{ doc('dclr_pcs_amt') }}"
+
+      - name: ship_pick_dt
+        data_type: date
+        description: "{{ doc('ship_pick_dt') }}"
+
+      - name: ship_pick_tm
+        data_type: time
+        description: "{{ doc('ship_pick_tm') }}"
+
+      - name: ship_pick_utc_offset
+        data_type: varchar
+        description: "{{ doc('ship_pick_utc_offset') }}"
+
+      - name: ship_rt_dt
+        data_type: date
+        description: "{{ doc('ship_rt_dt') }}"
+
+      - name: ship_rt_tm
+        data_type: time
+        description: "{{ doc('ship_rt_tm') }}"
+
+      - name: ship_rt_utc_offset
+        data_type: varchar
+        description: "{{ doc('ship_rt_utc_offset') }}"
+
+      - name: shp_chrg_overrride_flg
+        data_type: varchar
+        description: "{{ doc('shp_chrg_overrride_flg') }}"
+
+      - name: shp_chrg_spot_rt_flg
+        data_type: varchar
+        description: "{{ doc('shp_chrg_spot_rt_flg') }}"
+
+      - name: shp_chrg_duty_only_flg
+        data_type: varchar
+        description: "{{ doc('shp_chrg_duty_only_flg') }}"
+
+      - name: shp_chrg_pricing_id
+        data_type: varchar
+        description: "{{ doc('shp_chrg_pricing_id') }}"
+
+      - name: shp_chrg_zoning_id
+        data_type: varchar
+        description: "{{ doc('shp_chrg_zoning_id') }}"
+
+      - name: shp_chrg_pricing_zone_id
+        data_type: varchar
+        description: "{{ doc('shp_chrg_pricing_zone_id') }}"
+
+      - name: shp_chrg_exempt_flg
+        data_type: varchar
+        description: "{{ doc('shp_chrg_exempt_flg') }}"
+
+      - name: shp_chrg_price_gross_amt
+        data_type: number
+        description: "{{ doc('shp_chrg_price_gross_amt') }}"
+
+      - name: shp_chrg_price_adj_amt
+        data_type: number
+        description: "{{ doc('shp_chrg_price_adj_amt') }}"
+
+      - name: shp_chrg_price_net_amt
+        data_type: number
+        description: "{{ doc('shp_chrg_price_net_amt') }}"
+
+      - name: shp_chrg_base_amt
+        data_type: number
+        description: "{{ doc('shp_chrg_base_amt') }}"
+
+      - name: shp_chrg_crncy_type
+        data_type: varchar
+        description: "{{ doc('shp_chrg_crncy_type') }}"
+
+      - name: shp_chrg_crncy_cd
+        data_type: varchar
+        description: "{{ doc('shp_chrg_crncy_cd') }}"
+
+      - name: lnk_fl
+        data_type: number
+        description: "{{ doc('lnk_fl') }}"
+
+      - name: shp_chrg_rating_err_cd
+        data_type: varchar
+        description: "{{ doc('shp_chrg_rating_err_cd') }}"
+
+      - name: shp_chrg_rating_err_txt
+        data_type: varchar
+        description: "{{ doc('shp_chrg_rating_err_txt') }}"
+
+      - name: acct_no
+        data_type: varchar
+        description: "{{ doc('acct_no') }}"
+
+      - name: bill_cycle
+        data_type: date
+        description: "{{ doc('bill_cycle') }}"
+
+      - name: file_ts
+        data_type: timestamp_ntz
+        description: "{{ doc('file_ts') }}"
+
+      - name: dvra_key_id
+        data_type: varchar
+        description: "{{ doc('dvra_key_id') }}"
+
+      - name: ibs_key_id
+        data_type: varchar
+        description: "{{ doc('ibs_key_id') }}"
+
+      - name: debitcredit_flg
+        data_type: varchar
+        description: "{{ doc('debitcredit_flg') }}"
+
+      - name: invce_no
+        data_type: varchar
+        description: "{{ doc('invce_no') }}"
+
+      - name: orig_invce_no
+        data_type: varchar
+        description: "{{ doc('orig_invce_no') }}"
+
+      - name: bill_wght_val
+        data_type: number
+        description: "{{ doc('bill_wght_val') }}"
+
+      - name: std_bill_wght_val
+        data_type: number
+        description: "{{ doc('std_bill_wght_val') }}"
+
+      - name: bill_wght_uom
+        data_type: varchar
+        description: "{{ doc('bill_wght_uom') }}"
+
+      - name: std_bill_wght_uom
+        data_type: varchar
+        description: "{{ doc('std_bill_wght_uom') }}"
