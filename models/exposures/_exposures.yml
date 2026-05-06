@@ -1,0 +1,37 @@
+version: 2
+
+exposures:
+  - name: dd_progress_report
+    label: dd progress report
+    type: dashboard
+    maturity: high
+    url: >
+      https://app.powerbi.com/groups/me/reports/e96ba1d0-8132-4f56-8e18-79d0ccabeeae/d698ee6e0600d058029d?experience=power-bi
+    description: >
+      "discount progress report with history"
+
+    depends_on:
+      - ref('fct_dd_progress_EUR')
+      - ref('dim_customers')
+      - ref('dim_geo_hier')
+
+    owner:
+      name: Ivan Kvansovsky
+      email: ivo.kvasnovsky@gmail.com
+
+  - name: misssed_fuel_surrcharge
+    label: missed fuel surrcharge shipment simulations
+    type: dashboard
+    maturity: high
+    url: >
+      https://app.powerbi.com/groups/me/reports/e96ba1d0-8132-4f56-8e18-79d0ccabeeae/7e3b97002cc02c72c43b?experience=power-bi
+    description: >
+      "fuel prices simulations"
+
+    depends_on:
+      - ref('fct_ship_simulations_EUR')
+      - ref('dim_geo_hier')
+
+    owner:
+      name: Ivan Kvasnovsky
+      email: ivo.kvasnovsky@gmail.com
