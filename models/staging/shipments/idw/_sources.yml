@@ -1,0 +1,602 @@
+version: 2
+
+sources:
+  - name: idw
+    description: "idw SAP data"
+    database: "PINT_L0_DATASOURCES"
+    schema: "PINT"
+
+    tables:
+
+      - name: revenue_details
+        identifier: T_IDW_REVENUE_DETAIL
+        columns:
+
+          - name: system_source_code
+            data_type: varchar
+            description: "{{ doc('syst_src_cd') }}"
+            data_tests:
+              - not_null
+
+          - name: system_country_code
+            data_type: varchar
+            description: "{{ doc('system_country_code') }}"
+            data_tests:
+              - not_null
+
+          - name: revenue_no
+            data_type: varchar
+            description: "{{ doc('revenue_no') }}"
+            data_tests:
+              - not_null
+
+          - name: valid_from
+            data_type: date
+            description: "{{ doc('valid_from') }}"
+            data_tests:
+              - not_null
+
+          - name: revenue_detail_no
+            data_type: number
+            description: "{{ doc('revenue_detail_no') }}"
+
+          - name: invoice_no
+            data_type: varchar
+            description: "{{ doc('invoice_no') }}"
+
+          - name: invoice_date
+            data_type: timestamp_ntz
+            description: "{{ doc('invoice_date') }}"
+
+          - name: service_type_code
+            data_type: varchar
+            description: "{{ doc('service_type_code') }}"
+
+          - name: payer_account
+            data_type: varchar
+            description: "{{ doc('payer_account') }}"
+
+          - name: service_code
+            data_type: varchar
+            description: "{{ doc('service_code') }}"
+
+          - name: status_code
+            data_type: varchar
+            description: "{{ doc('status_code') }}"
+
+          - name: charge_amount
+            data_type: number
+            description: "Charge amount"
+
+          - name: tax
+            data_type: number
+            description: "Tax amount"
+
+          - name: currency_code
+            data_type: varchar
+            description: "Currency code"
+
+          - name: adjustment_flag
+            data_type: varchar
+            description: "Adjustment flag"
+
+          - name: discount_flag
+            data_type: varchar
+            description: "Discount flag"
+
+          - name: billing_type
+            data_type: varchar
+            description: "Billing type"
+
+          - name: payment_method
+            data_type: varchar
+            description: "Payment method"
+
+          - name: product_surch_flag
+            data_type: varchar
+            description: "Product surcharge flag"
+
+          - name: load_source_id
+            data_type: number
+            description: "Load source ID"
+
+          - name: load_line_no
+            data_type: number
+            description: "Load line number"
+
+          - name: service_code2
+            data_type: varchar
+            description: "Secondary service code"
+
+          - name: rule_no
+            data_type: number
+            description: "Rule number"
+
+          - name: extra_charge_id
+            data_type: varchar
+            description: "Extra charge ID"
+
+          - name: type_of_discount
+            data_type: varchar
+            description: "Type of discount"
+
+          - name: extra_charge_type
+            data_type: varchar
+            description: "Extra charge type"
+
+          - name: payer_account_cleanst
+            data_type: varchar
+            description: "Payer account clean status"
+
+          - name: xtra_chrg_piece_qty
+            data_type: number
+            description: "Extra charge piece quantity"
+
+          - name: shp_rec_key
+            data_type: number
+            description: "Shipment record key"
+
+          - name: pricing_id
+            data_type: varchar
+            description: "Pricing ID"
+
+      - name: shipments
+        identifier: t_idw_gsmart_ddwc_shipment
+        columns:
+          - name: system_source_code
+            data_type: varchar
+            description: "System source code"
+            data_tests:
+              - not_null
+
+          - name: mapped_source_code
+            data_type: varchar
+            description: "Mapped source code"
+
+          - name: system_country_code
+            data_type: varchar
+            description: "System country code"
+
+          - name: valid_from
+            data_type: date
+            description: "Date from which record is valid"
+            data_tests:
+              - not_null
+
+          - name: revenue_no
+            data_type: number
+            description: "Revenue number"
+            data_tests:
+              - not_null 
+              
+          - name: extra_charge_id
+            data_type: number
+            description: "Extra charge ID"
+
+          - name: revenue_type
+            data_type: varchar
+            description: "Revenue type"
+
+          - name: shipment_no
+            data_type: float
+            description: "Shipment number"
+
+          - name: international_shipment_no
+            data_type: varchar
+            description: "International shipment number"
+
+          - name: billing_account_no
+            data_type: varchar
+            description: "Billing account number"
+
+          - name: sender_account_no
+            data_type: varchar
+            description: "Sender account number"
+
+          - name: receiver_account_no
+            data_type: varchar
+            description: "Receiver account number"
+
+          - name: facility_origin_loc
+            data_type: varchar
+            description: "Origin facility location code"
+
+          - name: facility_origin
+            data_type: varchar
+            description: "Origin facility"
+
+          - name: origin_country_code
+            data_type: varchar
+            description: "Origin country code"
+
+          - name: facility_destination_loc
+            data_type: varchar
+            description: "Destination facility location code"
+
+          - name: facility_destination
+            data_type: varchar
+            description: "Destination facility"
+
+          - name: destination_country_code
+            data_type: varchar
+            description: "Destination country code"
+
+          - name: billing_facility_loc
+            data_type: varchar
+            description: "Billing facility location code"
+
+          - name: billing_facility
+            data_type: varchar
+            description: "Billing facility"
+
+          - name: billing_country_code
+            data_type: varchar
+            description: "Billing country code"
+
+          - name: local_product_code
+            data_type: varchar
+            description: "Local product code"
+
+          - name: network_product_code
+            data_type: varchar
+            description: "Network product code"
+
+          - name: shipment_pickup_date
+            data_type: date
+            description: "Shipment pickup date"
+
+          - name: invoice_no
+            data_type: varchar
+            description: "Invoice number"
+
+          - name: invoice_date
+            data_type: date
+            description: "Invoice date"
+
+          - name: weight_charge
+            data_type: float
+            description: "Weight charge amount"
+
+          - name: extra_charge
+            data_type: float
+            description: "Extra charge amount"
+
+          - name: total_charge
+            data_type: float
+            description: "Total charge amount"
+
+          - name: total_tax
+            data_type: float
+            description: "Total tax amount"
+
+          - name: total_tax_discount
+            data_type: float
+            description: "Total tax discount amount"
+
+          - name: local_currency_code
+            data_type: varchar
+            description: "Local currency code"
+
+          - name: billing_currency_code
+            data_type: varchar
+            description: "Billing currency code"
+
+          - name: billing_exchange_rate
+            data_type: float
+            description: "Billing exchange rate"
+
+          - name: no_of_shipments
+            data_type: number
+            description: "Number of shipments"
+
+          - name: no_of_pieces
+            data_type: number
+            description: "Number of pieces"
+
+          - name: no_of_pallets
+            data_type: varchar
+            description: "Number of pallets"
+
+          - name: billed_weight
+            data_type: float
+            description: "Billed weight"
+
+          - name: customer_weight
+            data_type: varchar
+            description: "Customer declared weight"
+
+          - name: volumetric_weight
+            data_type: varchar
+            description: "Volumetric weight"
+
+          - name: actual_weight
+            data_type: varchar
+            description: "Actual shipment weight"
+
+          - name: weight_unit
+            data_type: varchar
+            description: "Weight unit of measure"
+
+          - name: weight_flag
+            data_type: varchar
+            description: "Weight flag"
+
+          - name: billed_weight_kg
+            data_type: float
+            description: "Billed weight in kilograms"
+
+          - name: shipment_actual_volume
+            data_type: varchar
+            description: "Actual shipment volume"
+
+          - name: shipment_declared_volume
+            data_type: varchar
+            description: "Declared shipment volume"
+
+          - name: volume_unit
+            data_type: varchar
+            description: "Volume unit of measure"
+
+          - name: billing_type
+            data_type: varchar
+            description: "Billing type"
+
+          - name: payment_method
+            data_type: varchar
+            description: "Payment method"
+
+          - name: card_charge_id
+            data_type: varchar
+            description: "Card charge ID"
+
+          - name: billing_transaction_type
+            data_type: varchar
+            description: "Billing transaction type"
+
+          - name: record_id
+            data_type: varchar
+            description: "Record ID"
+
+          - name: transaction_type
+            data_type: varchar
+            description: "Transaction type"
+
+          - name: adjustment_flag
+            data_type: varchar
+            description: "Adjustment flag"
+
+          - name: accrual_flag
+            data_type: varchar
+            description: "Accrual flag"
+
+          - name: split_billing_flag
+            data_type: varchar
+            description: "Split billing flag"
+
+          - name: reversal_flag
+            data_type: varchar
+            description: "Reversal flag"
+
+          - name: reversal_reason_code
+            data_type: varchar
+            description: "Reversal reason code"
+
+          - name: central_rate_code
+            data_type: varchar
+            description: "Central rate code"
+
+          - name: rate_table_used
+            data_type: varchar
+            description: "Rate table used"
+
+          - name: inco_term
+            data_type: varchar
+            description: "INCO term"
+
+          - name: pick_up_transportation_mode
+            data_type: varchar
+            description: "Pick-up transportation mode"
+
+          - name: delivery_transportation_mode
+            data_type: varchar
+            description: "Delivery transportation mode"
+
+          - name: formal_clearance_indicator
+            data_type: varchar
+            description: "Formal clearance indicator"
+
+          - name: shipper_name
+            data_type: varchar
+            description: "Shipper name"
+
+          - name: zipcode_origin
+            data_type: varchar
+            description: "Origin zipcode"
+
+          - name: zipcode_destination
+            data_type: varchar
+            description: "Destination zipcode"
+
+          - name: route_code
+            data_type: varchar
+            description: "Route code"
+
+          - name: shipment_area
+            data_type: varchar
+            description: "Shipment area"
+
+          - name: shipment_reference
+            data_type: varchar
+            description: "Shipment reference"
+
+          - name: delivery_density
+            data_type: varchar
+            description: "Delivery density"
+
+          - name: domestic_shipment_flag
+            data_type: varchar
+            description: "Domestic shipment flag"
+
+          - name: import_export_flag
+            data_type: varchar
+            description: "Import export flag"
+
+          - name: shp_rec_key
+            data_type: number
+            description: "Shipment record key"
+
+          - name: shp_rec_key_rule
+            data_type: number
+            description: "Shipment record key rule"
+
+          - name: load_source_id
+            data_type: number
+            description: "Load source ID"
+
+          - name: load_line_no
+            data_type: number
+            description: "Load line number"
+
+          - name: contract_mode
+            data_type: varchar
+            description: "Contract mode"
+
+          - name: contract_participation
+            data_type: varchar
+            description: "Contract participation"
+
+          - name: shipment_no_ops
+            data_type: varchar
+            description: "Operations shipment number"
+
+          - name: revenue_origin_type
+            data_type: varchar
+            description: "Revenue origin type"
+
+          - name: revenue_line_status
+            data_type: varchar
+            description: "Revenue line status"
+
+          - name: billing_type_direction
+            data_type: varchar
+            description: "Billing type direction"
+
+          - name: ib434_ln_id
+            data_type: number
+            description: "IB434 line ID"
+
+          - name: ntwk_billing_facility_src
+            data_type: varchar
+            description: "Network billing facility source"
+
+          - name: ntwk_owner_facility_src
+            data_type: varchar
+            description: "Network owner facility source"
+
+          - name: ntwk_facility_origin_src
+            data_type: varchar
+            description: "Network origin facility source"
+
+          - name: ntwk_facility_destination_src
+            data_type: varchar
+            description: "Network destination facility source"
+
+          - name: network_product_code_src
+            data_type: varchar
+            description: "Network product code source"
+
+          - name: source_code
+            data_type: varchar
+            description: "Source code"
+
+          - name: revenue_source
+            data_type: varchar
+            description: "Revenue source"
+
+          - name: other_tax_amount
+            data_type: float
+            description: "Other tax amount"
+
+          - name: cb_period_number
+            data_type: date
+            description: "CB period number"
+
+          - name: period_end_date
+            data_type: date
+            description: "Period end date"
+
+          - name: charge_type
+            data_type: varchar
+            description: "Charge type"
+
+          - name: extra_charge_cd
+            data_type: varchar
+            description: "Extra charge code"
+
+          - name: extra_charge_tax_cd
+            data_type: varchar
+            description: "Extra charge tax code"
+
+          - name: tcsc_flag
+            data_type: varchar
+            description: "TCSC flag"
+
+          - name: imp_flag
+            data_type: varchar
+            description: "IMP flag"
+
+          - name: d_tax_cd
+            data_type: varchar
+            description: "D tax code"
+
+          - name: d_tax_insurance_cd
+            data_type: varchar
+            description: "D tax insurance code"
+
+          - name: d_tax_insurance_perc
+            data_type: number
+            description: "D tax insurance percentage"
+
+          - name: discount_cd
+            data_type: varchar
+            description: "Discount code"
+
+          - name: b_tax
+            data_type: number
+            description: "B tax amount"
+
+          - name: billing_currency_code_src
+            data_type: varchar
+            description: "Billing currency code source"
+
+          - name: billed_weight_lb
+            data_type: float
+            description: "Billed weight in pounds"
+
+          - name: insured_value
+            data_type: float
+            description: "Insured value"
+
+          - name: insrd_val_crncy_cd
+            data_type: varchar
+            description: "Insured value currency code"
+
+          - name: inv_type
+            data_type: varchar
+            description: "Invoice type"
+
+          - name: split_bill_acct_no
+            data_type: varchar
+            description: "Split billing account number"
+
+          - name: fisc_inv_no
+            data_type: number
+            description: "Fiscal invoice number"
+
+          - name: insr_premium_type
+            data_type: varchar
+            description: "Insurance premium type"
+
+          - name: misc_txt
+            data_type: varchar
+            description: "Miscellaneous text"

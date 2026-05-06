@@ -1,0 +1,162 @@
+version: 2
+
+sources:
+  - name: gre
+    description: "global rating engine"
+    database: "PINT_L0_DATASOURCES"
+    schema: "PINT"
+
+    tables:
+      - name: shipments
+        identifier: T_GRE_SHIPMENT
+        description: "gre shipment simulation"
+        columns:
+          - name: sim_type
+            data_type: varchar
+            description: "Simulation type"
+
+          - name: ctry_cd
+            data_type: varchar
+            description: "{{ doc('ctry_cd') }}"
+            data_tests:
+              - not_null
+
+          - name: load_set_id
+            data_type: number
+            description: "Load set ID"
+
+          - name: file_nm
+            data_type: varchar
+            description: "{{ doc('file_nm') }}"
+
+          - name: load_proc_id
+            data_type: number
+            description: "Load process ID"
+
+          - name: gre_uniq_id
+            data_type: varchar
+            description: "GRE unique identifier"
+            data_tests:
+              - not_null 
+
+          - name: awb_no
+            data_type: number
+            description: "Air waybill number"
+
+          - name: qual_no
+            data_type: number
+            description: "Qualifier number"
+            data_tests:
+              - not_null 
+
+          - name: xtra_chrg_rate
+            data_type: number
+            description: "Extra charge rate"
+
+          - name: xtra_chrg_amt
+            data_type: number
+            description: "Extra charge amount"
+
+          - name: cur_cd
+            data_type: varchar
+            description: "Currency code"
+
+          - name: total_amt
+            data_type: number
+            description: "Total amount"
+
+          - name: total_amt_invoiced
+            data_type: number
+            description: "Total amount invoiced"
+
+          - name: total_amt_settled
+            data_type: number
+            description: "Total amount settled"
+
+      - name: gre_linkage
+        identifier: T_GRE_LINKAGE
+        description: "gre linking table"
+        columns:
+          - name: gre_uniq_id
+            data_type: varchar
+            description: "GRE unique identifier"
+            data_tests:
+              - not_null
+
+          - name: awb_no
+            data_type: varchar
+            description: "Air waybill number"
+
+          - name: qual_no
+            data_type: number
+            description: "Qualifier number"
+            data_tests:
+              - not_null
+              
+          - name: lnk_fl
+            data_type: number
+            description: "Link flag"
+
+          - name: valid_from
+            data_type: date
+            description: "Date from which linkage is valid"
+
+          - name: system_source_code
+            data_type: varchar
+            description: "System source code"
+            data_tests:
+              - not_null
+              
+          - name: ctry_cd
+            data_type: varchar
+            description: "{{ doc('ctry_cd') }}"
+            data_tests:
+              - not_null
+
+          - name: revenue_no
+            data_type: varchar
+            description: "Revenue number"
+
+          - name: gre_ctry_flg
+            data_type: varchar
+            description: "GRE country flag"
+
+          - name: lnk_flg
+            data_type: varchar
+            description: "Linkage flag"
+
+          - name: lnk_excl_flg
+            data_type: varchar
+            description: "Link exclusion flag"
+
+          - name: acct_no
+            data_type: varchar
+            description: "Account number"
+
+          - name: clear_flg_pm
+            data_type: varchar
+            description: "Clearance flag PM"
+
+          - name: clear_flg_cm
+            data_type: varchar
+            description: "Clearance flag CM"
+
+          - name: gre_uniq_id_orig
+            data_type: varchar
+            description: "Original GRE unique identifier"
+
+          - name: gre_uniq_id_dn
+            data_type: varchar
+            description: "GRE unique identifier DN"
+
+          - name: cn_flg
+            data_type: varchar
+            description: "C/N flag"
+
+          - name: revenue_flg
+            data_type: varchar
+            description: "Revenue flag"
+
+          - name: revenue_type
+            data_type: varchar
+            description: "Revenue type"

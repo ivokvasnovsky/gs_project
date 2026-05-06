@@ -1,0 +1,200 @@
+version: 2
+
+sources:
+  - name: common_dims
+    description: "commonly used dimensions used accross DWH, govern by ITS team"
+
+    database: "PINT_L0_DATASOURCES"
+    schema: "PINT"
+
+    tables:
+      - name: customers
+        identifier: T_CUSTOMERS
+        description: "customer table with cpa_id code"
+        columns:
+          - name: syst_src_cd
+            data_type: varchar
+            description: "{{ doc('syst_src_cd') }}"
+            data_tests:
+              - not_null
+
+          - name: cpa_id
+            data_type: varchar
+            description: "{{ doc('cpa_id') }}"
+            data_tests:
+              - not_null
+
+          - name: cpa_name
+            data_type: varchar
+            description: "{{ doc('cpa_name') }}"
+            data_tests:
+              - not_null
+
+      - name: exchange_rate
+        identifier: T_DDWC_EXCHANGE_RATE
+        description: "commonly used exchange rate to EUR, regularly updated"
+        columns:
+          - name: from_currency
+            data_type: varchar
+            description: "{{ doc('from_currency') }}"
+            data_tests:
+              - not_null
+
+          - name: to_currency
+            data_type: varchar
+            description: "{{ doc('to_currency') }}"
+            data_tests:
+              - not_null
+
+          - name: ber_exchange_rate
+            data_type: number
+            description: "{{ doc('ber_exchange_rate') }}"
+            data_tests:
+              - not_null
+
+          - name: ner_exchange_rate
+            data_type: number
+            description: "{{ doc('ner_exchange_rate') }}"
+            data_tests:
+              - not_null
+
+          - name: valid_from
+            data_type: date
+            description: "{{ doc('valid_from') }}"
+            data_tests:
+              - not_null
+
+      - name: geo_ref
+        identifier: T_GEO_HIER
+        description: "commonly used regions table"
+        columns:
+          - name: ctry_cd
+            data_type: varchar
+            description: "{{ doc('ctry_cd') }}"
+            data_tests:
+              - not_null
+              - unique
+
+          - name: ctry_nm
+            data_type: varchar
+            description: "{{ doc('ctry_nm') }}"
+            data_tests:
+              - not_null
+
+          - name: ctry_area_cd
+            data_type: varchar
+            description: "{{ doc('ctry_area_cd') }}"
+            data_tests:
+              - not_null
+
+          - name: ctry_area_nm
+            data_type: varchar
+            description: "{{ doc('ctry_area_nm') }}"
+            data_tests:
+              - not_null
+
+          - name: area_cd
+            data_type: varchar
+            description: "{{ doc('area_cd') }}"
+            data_tests:
+              - not_null
+
+          - name: area_nm
+            data_type: varchar
+            description: "{{ doc('area_nm') }}"
+            data_tests:
+              - not_null
+
+          - name: sub_rgn_cd
+            data_type: varchar
+            description: "{{ doc('sub_rgn_cd') }}"
+            data_tests:
+              - not_null
+
+          - name: sub_rgn_nm
+            data_type: varchar
+            description: "{{ doc('sub_rgn_nm') }}"
+            data_tests:
+              - not_null
+
+          - name: rgn_cd
+            data_type: varchar
+            description: "{{ doc('rgn_cd') }}"
+            data_tests:
+              - not_null
+
+          - name: rgn_nm
+            data_type: varchar
+            description: "{{ doc('rgn_nm') }}"
+            data_tests:
+              - not_null
+
+          - name: super_rgn_cd
+            data_type: varchar
+            description: "{{ doc('super_rgn_cd') }}"
+            data_tests:
+              - not_null
+
+          - name: super_rgn_nm
+            data_type: varchar
+            description: "{{ doc('super_rgn_nm') }}"
+            data_tests:
+              - not_null
+
+          - name: clstr_nm
+            data_type: varchar
+            description: "{{ doc('clstr_nm') }}"
+            data_tests:
+              - not_null
+
+          - name: comet_organization_cd
+            data_type: varchar
+            description: "{{ doc('comet_organization_cd') }}"
+            data_tests:
+              - not_null
+
+          - name: bill_syst_cd
+            data_type: varchar
+            description: "{{ doc('bill_syst_cd') }}"
+            data_tests:
+              - not_null
+
+          - name: rec_type_cd
+            data_type: varchar
+            description: "{{ doc('rec_type_cd') }}"
+            data_tests:
+              - not_null
+
+          - name: dt_rec_last_upd
+            data_type: date
+            description: "{{ doc('dt_rec_last_upd') }}"
+            data_tests:
+              - not_null
+
+          - name: filename
+            data_type: varchar
+            description: "{{ doc('filename') }}"
+            data_tests:
+              - not_null
+
+          - name: folderpath
+            data_type: varchar
+            description: "{{ doc('folderpath') }}"
+            data_tests:
+              - not_null
+
+          - name: folderpath_datetime
+            data_type: timestamp_ntz
+            description: "{{ doc('folderpath_datetime') }}"
+            data_tests:
+              - not_null
+
+          - name: load_job_id
+            data_type: number
+            description: "{{ doc('load_job_id') }}"
+
+
+          - name: load_datetime
+            data_type: timestamp_ntz
+            description: "{{ doc('load_datetime') }}"
+

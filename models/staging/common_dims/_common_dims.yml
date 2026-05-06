@@ -1,0 +1,139 @@
+version: 2
+
+models:
+  - name: stg_common_dims__customers
+    description: "common customers dimension used in whole DWH"
+
+    columns:
+      - name: syst_src_cd
+        data_type: varchar
+        description: "{{ doc('syst_src_cd') }}"
+
+      - name: ctry_cd
+        data_type: varchar
+        description: "{{ doc('ctry_cd') }}"
+
+      - name: cpa_id
+        data_type: number
+        description: "{{ doc('cpa_id') }}"
+        data_tests:
+          - not_null
+          - unique
+
+      - name: cpa_name
+        data_type: varchar
+        description: "{{ doc('cpa_name') }}"
+
+  - name: stg_common_dims__exchange_rate
+    description: ""
+    columns:
+      - name: from_currency
+        data_type: varchar
+        description: "{{ doc('from_currency') }}"
+  
+      - name: to_currency
+        data_type: varchar
+        description: "{{ doc('to_currency') }}"
+
+      - name: ber_exchange_rate
+        data_type: number
+        description: "{{ doc('ber_exchange_rate') }}"
+
+      - name: ner_exchange_rate
+        data_type: number
+        description: "{{ doc('ner_exchange_rate') }}"
+
+      - name: valid_from
+        data_type: date
+        description: "{{ doc('valid_from') }}"
+
+  - name: stg_common_dims__geo_ref
+    description: ""
+    columns:
+      - name: ctry_cd
+        data_type: varchar
+        description: "{{ doc('ctry_cd') }}"
+
+      - name: ctry_nm
+        data_type: varchar
+        description: "{{ doc('ctry_nm') }}"
+
+      - name: ctry_area_cd
+        data_type: varchar
+        description: "{{ doc('ctry_area_cd') }}"
+
+      - name: ctry_area_nm
+        data_type: varchar
+        description: "{{ doc('ctry_area_nm') }}"
+
+      - name: area_cd
+        data_type: varchar
+        description: "{{ doc('area_cd') }}"
+
+      - name: area_nm
+        data_type: varchar
+        description: "{{ doc('area_nm') }}"
+
+      - name: sub_rgn_cd
+        data_type: varchar
+        description: "{{ doc('sub_rgn_cd') }}"
+
+      - name: sub_rgn_nm
+        data_type: varchar
+        description: "{{ doc('sub_rgn_nm') }}"
+
+      - name: rgn_cd
+        data_type: varchar
+        description: "{{ doc('rgn_cd') }}"
+
+      - name: rgn_nm
+        data_type: varchar
+        description: "{{ doc('rgn_nm') }}"
+
+      - name: super_rgn_cd
+        data_type: varchar
+        description: "{{ doc('super_rgn_cd') }}"
+
+      - name: super_rgn_nm
+        data_type: varchar
+        description: "{{ doc('super_rgn_nm') }}"
+
+      - name: clstr_nm
+        data_type: varchar
+        description: "{{ doc('clstr_nm') }}"
+
+      - name: comet_organization_cd
+        data_type: varchar
+        description: "{{ doc('comet_organization_cd') }}"
+
+      - name: bill_syst_cd
+        data_type: varchar
+        description: "{{ doc('bill_syst_cd') }}"
+
+      - name: rec_type_cd
+        data_type: varchar
+        description: "{{ doc('rec_type_cd') }}"
+
+      - name: dt_rec_last_upd
+        data_type: date
+        description: "{{ doc('dt_rec_last_upd') }}"
+
+      - name: filename
+        data_type: varchar
+        description: "{{ doc('filename') }}"
+
+      - name: folderpath
+        data_type: varchar
+        description: "{{ doc('folderpath') }}"
+
+      - name: folderpath_datetime
+        data_type: timestamp_ntz
+        description: "{{ doc('folderpath_datetime') }}"
+
+      - name: load_job_id
+        data_type: number
+        description: "{{ doc('load_job_id') }}"
+
+      - name: load_datetime
+        data_type: timestamp_ntz
+        description: "{{ doc('load_datetime') }}"

@@ -1,0 +1,170 @@
+version: 2
+
+sources:
+  - name: dd_reports
+    database: "RAW_L0_DATASOURCES"
+    schema: "RAW"
+
+    config:
+      freshness:
+        warn_after:
+          count: 100
+          period: day
+        error_after:
+          count: 100
+          period: day
+      loaded_at_field: FILE_LAST_MODIFIED
+    
+    tables:
+      - name: dd_progress
+        identifier: dd_progress_data_raw
+        description: "dd progress data raw"
+        columns:
+
+          - name: cpa_key
+            data_type: varchar
+            description: "CPA key"
+            data_tests:
+              - not_null
+
+          - name: discounted_products_group
+            data_type: varchar
+            description: "{{ doc('discounted_products_grp') }}"
+            data_tests:
+              - not_null
+
+          - name: payer_country
+            data_type: varchar
+            description: "Payer country"            
+            data_tests:
+              - not_null
+
+          - name: discount_key
+            data_type: varchar
+            description: "{{ doc('discount_key') }}"
+
+          - name: discount_pid
+            data_type: varchar
+            description: "{{ doc('discount_pid') }}"
+
+          - name: measurement_period
+            data_type: varchar
+            description: "{{ doc('measurement_period') }}"
+
+          - name: discounting_period
+            data_type: varchar
+            description: "{{ doc('discounting_period') }}"
+
+          - name: threshold_type
+            data_type: varchar
+            description: "{{ doc('threshold_type') }}"
+
+          - name: ramp_up_period
+            data_type: varchar
+            description: "{{ doc('ramp_up_period') }}"
+
+          - name: ramp_up_end_date
+            data_type: varchar
+            description: "{{ doc('ramp_up_end_dt') }}"
+
+          - name: currency_code
+            data_type: varchar
+            description: "{{ doc('currency_cd') }}"
+
+          - name: initial_discount_amount
+            data_type: varchar
+            description: "{{ doc('initial_discount_amt') }}"
+
+          - name: initial_discount_percent
+            data_type: varchar
+            description: "{{ doc('initial_discount_pct') }}"
+
+          - name: initial_discount_period
+            data_type: varchar
+            description: "{{ doc('initial_discount_period') }}"
+
+          - name: discount_tiers_and_values
+            data_type: varchar
+            description: "{{ doc('discount_tiers_and_values') }}"
+
+          - name: last_review_date
+            data_type: varchar
+            description: "{{ doc('last_review_dt') }}"
+
+          - name: last_review_shipment_count
+            data_type: varchar
+            description: "{{ doc('last_review_shipment_cnt') }}"
+
+          - name: last_review_revenue_count
+            data_type: varchar
+            description: "{{ doc('last_review_revenue_amt') }}"
+
+          - name: current_discount_amount
+            data_type: varchar
+            description: "{{ doc('current_discount_amt') }}"
+
+          - name: current_discount_percent
+            data_type: varchar
+            description: "{{ doc('current_discount_pct') }}"
+
+          - name: next_discount_amount
+            data_type: varchar
+            description: "{{ doc('next_discount_amt') }}"
+
+          - name: next_discount_percent
+            data_type: varchar
+            description: "{{ doc('next_discount_pct') }}"
+
+          - name: next_review_due_date
+            data_type: varchar
+            description: "{{ doc('next_review_due_dt') }}"
+
+          - name: next_measurement_months
+            data_type: varchar
+            description: "{{ doc('next_measurement_months') }}"
+
+          - name: next_measurement_start_date
+            data_type: varchar
+            description: "{{ doc('next_measurement_start_dt') }}"
+
+          - name: shipment_progress_count
+            data_type: varchar
+            description: "{{ doc('shipment_progress_cnt') }}"
+
+          - name: revenue_progress_count
+            data_type: varchar
+            description: "{{ doc('revenue_progress_amt') }}"
+
+          - name: shipment_gap_to_current_level
+            data_type: varchar
+            description: "{{ doc('shipment_gap_to_current_lvl') }}"
+
+          - name: revenue_gap_to_current_level
+            data_type: varchar
+            description: "{{ doc('revenue_gap_to_current_lvl') }}"
+
+          - name: shipment_gap_to_next_level
+            data_type: varchar
+            description: "{{ doc('shipment_gap_to_next_lvl') }}"
+
+          - name: revenue_gap_to_next_level
+            data_type: varchar
+            description: "{{ doc('revenue_gap_to_next_lvl') }}"
+
+          - name: file_nm
+            data_type: varchar
+            description: "{{ doc('file_nm') }}"
+            data_tests:
+              - not_null
+              
+          - name: file_last_modified
+            data_type: timestamp_ntz
+            description: "File last modified timestamp"
+          
+          - name: report_dtm
+            data_type: varchar
+            description: "Report datetime"
+
+          - name: exported_to_file
+            data_type: varchar
+            description: "{{ doc('exported_to_file') }}"            
