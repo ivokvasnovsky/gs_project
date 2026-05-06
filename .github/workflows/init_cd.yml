@@ -38,7 +38,6 @@ jobs:
         run: |
           mkdir -p ~/.dbt
           echo "${{ vars.DBT_PROFILES }}" > ~/.dbt/profiles.yml
-          sed -i "s/password:.*/password: ${{ secrets.SNOWFLAKE_PASSWORD }}/" ~/.dbt/profiles.yml
 
       - name: dbt debug
         run: dbt debug --target prod
